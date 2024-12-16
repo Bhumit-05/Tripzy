@@ -3,6 +3,8 @@ const Router = express.Router;
 const { z } = require("zod");
 const { UserModel } = require("../db");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 const userRouter = Router();
 
@@ -50,6 +52,53 @@ userRouter.post("/signup", async function(req, res) {
         })
     }
 
+})
+
+// zod -> de-hash and check password -> if correct then return a token
+
+userRouter.post("/signin", async function(req, res) {
+    requiredBody = z.object({
+        email : z.string().email(),
+        password : z.string().min(5),
+    })
+    
+
+    const {success, error} = requiredBody.safeParse(req.body);
+
+    if(success){
+        
+        const { email, password } = req.body;
+
+        const user = await UserModel.findOne({
+            email : email
+        })
+
+        if(!user){
+            res.json({
+                message : "Email not signed up!"
+            })
+            return;
+        }
+
+        const passwordMatch = await bcrypt.compare(password, user.password);
+
+        if(passwordMatch){
+            const token = jwt.sign({ id : user._id.toString()}, process.env.USER_JWT_SECRET);
+            res.json({
+                token : token
+            });
+        }
+        else{
+            res.status(403).json({
+                message : "Incorrect password!"
+            })
+        }
+    }
+    else{
+        res.json({
+            message : "Invalid credentials"
+        })
+    }
 })
 
 module.exports = userRouter;
