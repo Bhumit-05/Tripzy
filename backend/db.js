@@ -13,14 +13,19 @@ const userSchema = new Schema({
 const tripSchema = new Schema({
     name : String,
     destination : [String],
-    travelers : [ObjectId],
+    travelers : [String],
     startDate : Date,
     endDate : Date,
-    budget : Number,
-    transaction : {
-
-    },
+    transaction : [],
     createdAt : { type: Date, default : Date.now }
+})
+
+const transactionSchema = new Schema({
+    userId : ObjectId,
+    tripId : ObjectId,
+    amount : Number,
+    description : String,
+    
 })
 
 const UserModel = mongoose.model("users", userSchema);
