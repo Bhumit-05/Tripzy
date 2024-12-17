@@ -5,6 +5,7 @@ const { userMiddleware } = require("../middlewares/user");
 require('dotenv').config();
 const friendRouter = Router();
 
+// Add a friend
 friendRouter.post("/friends", userMiddleware,async function(req, res){
     const userId = req.userId;
     const friendName = req.body.friendName;
@@ -73,6 +74,7 @@ friendRouter.post("/friends", userMiddleware,async function(req, res){
     }
 })
 
+// Get friends
 friendRouter.get("/", userMiddleware, async function(req, res){
     userId = req.userId;
 
@@ -83,6 +85,7 @@ friendRouter.get("/", userMiddleware, async function(req, res){
     })
 })
 
+// Remove a friend
 friendRouter.delete("/", userMiddleware, async function(req, res){
     userId = req.userId
     friendName = req.body.friendName;

@@ -2,7 +2,7 @@ const express = require("express");
 require('dotenv').config();
 const mongoose = require("mongoose");
 const userRouter = require("./routes/user");
-const friendRouter = require("./routes/friend");
+const friendRouter = require("./routes/friends");
 const app = express();
 
 app.use(express.json());
