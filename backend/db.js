@@ -12,12 +12,22 @@ const userSchema = new Schema({
 
 const tripSchema = new Schema({
     name : String,
-    destination : [String],
-    travelers : [String],
+    destination : String,
+    travelers : [ObjectId],
     startDate : Date,
     endDate : Date,
-    transaction : [],
-    createdAt : { type: Date, default : Date.now }
+    createdAt : { type: Date, default : Date.now },
+    status: {
+        type: String,
+        enum: ["not_started", "in_progress", "completed"],
+        default: "not_started",
+      },
+})
+
+const activitySchema = new Schema({
+    tripId : ObjectId,
+    activity : String,
+    date : Date
 })
 
 const transactionSchema = new Schema({
@@ -25,13 +35,17 @@ const transactionSchema = new Schema({
     tripId : ObjectId,
     amount : Number,
     description : String,
-    
+    date : { type: Date, default: Date.now }
 })
 
 const UserModel = mongoose.model("users", userSchema);
 const TripModel = mongoose.model("trips", tripSchema);
+const ActivityModel = mongoose.model("activities", activitySchema);
+const TransactionModel = mongoose.model("transactions", transactionSchema);
 
 module.exports = {
     UserModel,
-    TripModel
+    TripModel,
+    ActivityModel,
+    TransactionModel
 }

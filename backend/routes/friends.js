@@ -44,7 +44,7 @@ friendRouter.post("/friends", userMiddleware,async function(req, res){
             $push : {
                 friends : {
                     $each : [
-                        friend.username
+                        friend._id
                     ]
                 }
             }
@@ -57,7 +57,7 @@ friendRouter.post("/friends", userMiddleware,async function(req, res){
             $push : {
                 friends : {
                     $each : [
-                        user.username
+                        user._id
                     ]
                 }
             }
@@ -76,19 +76,21 @@ friendRouter.post("/friends", userMiddleware,async function(req, res){
 
 // Get friends
 friendRouter.get("/", userMiddleware, async function(req, res){
-    userId = req.userId;
+    // I am storing friend's username and not id because when i will be required to display the friends in frontend, so for each friend i will have to call the db to find the username for each respective userId. Since, each username is also unique, it will not create any problem
+    const userId = req.userId;
 
     const user = await UserModel.findById(userId);
+    const friends = user.friends;
 
     res.json({
-        friends : user.friends
+        friends
     })
 })
 
 // Remove a friend
 friendRouter.delete("/", userMiddleware, async function(req, res){
-    userId = req.userId
-    friendName = req.body.friendName;
+    const userId = req.userId
+    const friendName = req.body.friendName;
 
     const user = await UserModel.findById(userId);
 
