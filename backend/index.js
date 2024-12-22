@@ -6,9 +6,11 @@ const friendRouter = require("./routes/friends");
 const tripRouter = require("./routes/trips");
 const activityRouter = require("./routes/activities");
 const transactionRouter = require("./routes/transaction");
+const cors = require('cors');
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.use("/user", userRouter);
 app.use("/friends", friendRouter);

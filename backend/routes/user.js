@@ -13,10 +13,10 @@ const userRouter = Router();
 userRouter.post("/signup", async function(req, res) {
     
     requiredBody = z.object({
-        email : z.string().email(),
-        fullName : z.string().min(3).max(20),
-        username : z.string().min(3).max(20),
-        password : z.string().min(5),
+        email: z.string().email({ message: "Invalid email format" }),
+        fullName: z.string().min(3, { message: "Full name must be at least 3 characters long" }).max(20, { message: "Full name must be at most 20 characters long" }),
+        username: z.string().min(3, { message: "Username must be at least 3 characters long" }).max(20, { message: "Username must be at most 20 characters long" }),
+        password: z.string().min(5, { message: "Password must be at least 5 characters long" }),
     })
 
     const {success, error} = requiredBody.safeParse(req.body);
@@ -29,7 +29,7 @@ userRouter.post("/signup", async function(req, res) {
 
             const hashedPassword = await bcrypt.hash(password, 5);
 
-            await UserModel.create({
+            const user = await UserModel.create({
                 email : email,
                 fullName : fullName,
                 username : username,
@@ -37,7 +37,7 @@ userRouter.post("/signup", async function(req, res) {
             })
 
             res.json({
-                message : "User created successfully"
+                message : "Signup successful"
             })
         }
         catch(e){
@@ -48,7 +48,7 @@ userRouter.post("/signup", async function(req, res) {
     }
     else{
         res.json({
-            message : error.errors.map(e => {e.message})
+            message : error.errors[0].message
         })
     }
 
@@ -61,7 +61,6 @@ userRouter.post("/signin", async function(req, res) {
         email : z.string().email(),
         password : z.string().min(5),
     })
-    
 
     const {success, error} = requiredBody.safeParse(req.body);
 
@@ -84,7 +83,9 @@ userRouter.post("/signin", async function(req, res) {
 
         if(passwordMatch){
             const token = jwt.sign({ id : user._id.toString()}, process.env.USER_JWT_SECRET);
+            
             res.json({
+                message : "Token sent",
                 token : token
             });
         }
@@ -96,7 +97,7 @@ userRouter.post("/signin", async function(req, res) {
     }
     else{
         res.json({
-            message : "Invalid credentials"
+            message : error.errors[0].message
         })
     }
 })
