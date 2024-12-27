@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userSlice from "./userSlice";
+import { userReducer } from './userSlice';
+import friendReducer from './friendSlice';
 
 const AppStore = configureStore({
-    reducers : {
-        user : userSlice
+    reducer : {
+        user : userReducer,
+        friends : friendReducer
     }
 })
+
+export default AppStore;

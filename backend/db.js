@@ -1,13 +1,15 @@
 const mongoose = require("mongoose");
+const { DEFAULT_DP } = require("../frontend/src/utils/constants");
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Types.ObjectId;
 
 const userSchema = new Schema({
-    email : {type : String, unique : true, lowercase : true, requied : true},
+    email : {type : String, unique : true, lowercase : true, required : true},
+    dp_url : {type: String, default : DEFAULT_DP},
     friends : [String],
-    username : {type : String, requied : true, unique: true},
-    fullName : {type : String, requied : true},
-    password : {type : String, requied : true},
+    username : {type : String, required : true, unique: true},
+    fullName : {type : String, required : true},
+    password : {type : String, required : true},
 })
 
 const tripSchema = new Schema({

@@ -37,7 +37,7 @@ userRouter.post("/signup", async function(req, res) {
             })
 
             res.json({
-                message : "Signup successful"
+                message : "Signup successful, Sign in to continue"
             })
         }
         catch(e){

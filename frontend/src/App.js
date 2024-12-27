@@ -1,25 +1,48 @@
-import { createBrowserRouter, Navigate, RouterProvider } from 'react-router';
+import { createBrowserRouter, RouterProvider } from 'react-router';
 import './App.css';
 import Error from './Components/Error';
 import Home from './Components/Home';
 import Login from './Components/Login';
-import { useState } from 'react';
+import PrivateRoute from './Components/PrivateRoute';
+import CreateTrips from './Components/Create Trips';
+import Friends from './Components/Friend Page/Friends';
+
 
 function App() {
-
-  const [token, ] = useState(localStorage.getItem("token"));
 
   const appRouter = createBrowserRouter([
     {
       path : "/",
-      element : token ? <Home/> : <Navigate to = "/login"/>,
+      element : (
+        <PrivateRoute>
+          <Home/>
+        </PrivateRoute>
+      ),
       errorElement : <Error/>
     },
     {
       path : "/login",
-      element : token ? <Navigate to = "/"/> : <Login/>,
+      element : <Login/>,
       errorElement : <Error/>
-    }
+    },
+    {
+      path : "/createTrips",
+      element : (
+        <PrivateRoute>
+          <CreateTrips/>
+        </PrivateRoute>
+      ),
+      errorElement : <Error/>
+    },
+    {
+      path : "/friends",
+      element : (
+        <PrivateRoute>
+          <Friends/>
+        </PrivateRoute>
+      ),
+      errorElement : <Error/>
+    },
   ])
 
   return (

@@ -8,27 +8,53 @@ const tripRouter = Router();
 
 tripRouter.post("/", userMiddleware, async function(req, res){
 
-    const { startDate, endDate } = req.body;
+    const { name, destination, startDate, endDate } = req.body;
 
-    req.body.startDate = new Date(startDate);
-    req.body.endDate = new Date(endDate);
-
-
-    const { name, destination } = req.body;
-    startDate, endDate = req.body;
-    const userId = req.userId;
+    if(name===""){
+        res.json({
+            message : "Enter a name for the trip"
+        })
+        return;
+    }
+    if(destination===""){
+        res.json({
+            message : "Enter a destination"
+        })
+        return;
+    }
+    if(startDate===null){
+        res.json({
+            message : "Enter a start date for the trip"
+        })
+        return;
+    }
+    if(endDate===null){
+        res.json({
+            message : "Enter an end date for the trip"
+        })
+        return;
+    }
     
-    await TripModel.create({
-        name : name,
-        destination : destination,
-        travelers : [userId],
-        startDate : startDate,
-        endDate : endDate,
-    });
-
-    res.json({
-        message : "Trip created"
-    })
+    try{
+        const trip = await TripModel.create({
+            name : name,
+            destination : destination,
+            travelers : [req.userId],
+            startDate : startDate,
+            endDate : endDate,
+        });
+    
+        res.json({
+            message : "Trip created",
+            tripName : name,
+            tripId : trip._id
+        })
+    }
+    catch(e){
+        res.json({
+            message : e
+        })
+    }
 })
 
 tripRouter.get("/", userMiddleware, async function(req, res){
@@ -86,7 +112,7 @@ tripRouter.get("/getActivities", userMiddleware, async function(req, res){
         tripId : tripId
     })
     
-    console.log(Activities);
+    (Activities);
 
     res.json({
         Activities : Activities

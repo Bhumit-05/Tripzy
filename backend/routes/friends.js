@@ -6,7 +6,7 @@ require('dotenv').config();
 const friendRouter = Router();
 
 // Add a friend
-friendRouter.post("/friends", userMiddleware,async function(req, res){
+friendRouter.post("/", userMiddleware,async function(req, res){
     const userId = req.userId;
     const friendName = req.body.friendName;
 
@@ -14,29 +14,32 @@ friendRouter.post("/friends", userMiddleware,async function(req, res){
         username : friendName
     })
 
-    if(friend._id == userId){
-        res.json({
-            message : "Friend name and your username can't be same"
-        })
-        return;
-    }
-    
-    const user = await UserModel.findById(userId);
-    const friendList = user.friends;
-
-    let alreadyFriend = 0;
-    friendList.map(f => {
-        if(f.equals(friend._id)) alreadyFriend=1;
-    })
-
-    if(alreadyFriend){
-        res.json({
-            message : "Given user is already a friend"
-        })
-        return;
-    }
-
     if(friend){
+
+        if(friend._id == userId){
+            res.json({
+                message : "Friend name and your username can't be same"
+            })
+            return;
+        }
+        
+        const user = await UserModel.findById(userId);
+        const friendList = user.friends;
+    
+        let alreadyFriend = 0;
+        friendList.map(f => {
+            if(f===friendName) {
+                alreadyFriend = 1;
+            }
+        })
+    
+        if(alreadyFriend){
+            res.json({
+                message : "Given user is already a friend"
+            })
+            return;
+        }
+
         // adding friend in user's friend list
         await UserModel.updateOne({
             _id : userId
@@ -44,7 +47,7 @@ friendRouter.post("/friends", userMiddleware,async function(req, res){
             $push : {
                 friends : {
                     $each : [
-                        friend._id
+                        friendName
                     ]
                 }
             }
@@ -57,7 +60,7 @@ friendRouter.post("/friends", userMiddleware,async function(req, res){
             $push : {
                 friends : {
                     $each : [
-                        user._id
+                        user.username
                     ]
                 }
             }
@@ -77,14 +80,23 @@ friendRouter.post("/friends", userMiddleware,async function(req, res){
 // Get friends
 friendRouter.get("/", userMiddleware, async function(req, res){
     // I am storing friend's username and not id because when i will be required to display the friends in frontend, so for each friend i will have to call the db to find the username for each respective userId. Since, each username is also unique, it will not create any problem
-    const userId = req.userId;
+    try {
+        const userId = req.userId; // Assuming you're extracting this from middleware
+        const user = await UserModel.findById(userId);
+        
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
 
-    const user = await UserModel.findById(userId);
-    const friends = user.friends;
+        const friendUsernames = user.friends;
 
-    res.json({
-        friends
-    })
+        const friends = await UserModel.find({ username: { $in: friendUsernames } }, "username dp_url fullName");
+
+        res.json(friends);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Failed to retrieve friend list" });
+    }
 })
 
 // Remove a friend
