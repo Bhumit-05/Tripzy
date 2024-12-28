@@ -2,11 +2,13 @@ import React, { useRef, useState } from 'react'
 import Header from '../Header';
 import Input from '../../Extra Components/TextField';
 import FriendList from './FriendList';
+import useGetFriends from '../../hooks/useGetFriends';
 
 const Friends = () => {
 
   const [addMessage, setAddMessage] = useState("");
   const username = useRef("");
+  const getFriends = useGetFriends();
 
   const handleClick = async () => {
     const enteredUsername = username.current.value || "";
@@ -22,6 +24,7 @@ const Friends = () => {
       })
     })
 
+    getFriends();
     const json = await res.json();
     setAddMessage(json.message);
   }
@@ -52,7 +55,7 @@ const Friends = () => {
         </div>
       </div>
 
-      <h1 className='mx-auto max-w-fit mt-[200px] text-5xl underline'>Friend List</h1>
+      <h1 className='mx-auto max-w-fit mt-[150px] text-5xl underline mb-[100px]'>Friend List</h1>
       <FriendList/>
     </div>
   )

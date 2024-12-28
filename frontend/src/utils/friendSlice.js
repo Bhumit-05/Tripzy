@@ -8,9 +8,14 @@ const friendSlice = createSlice({
     reducers : {
         addFriendList : (state, action) => {
             state.friendList = action.payload;
+        },
+        removeFriend : (state, action) => {
+            state.friendList = state.friendList.filter(
+                friend => friend.username !== action.payload
+            );
         }
     }
 })
 
-export const {addFriendList} = friendSlice.actions;
+export const {addFriendList, removeFriend} = friendSlice.actions;
 export default friendSlice.reducer;
