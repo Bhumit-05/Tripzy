@@ -49,7 +49,7 @@ const Friends = () => {
         </div>
 
         <div className="w-full mt-6 mb-6 min-h-[30px]">
-          <h1 className="text-red-500 text-lg text-center">
+          <h1 className="text-red-500 text-lg font-normal text-center">
             {addMessage}
           </h1>
         </div>

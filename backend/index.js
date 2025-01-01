@@ -14,7 +14,7 @@ app.use(cors());
 
 app.use("/user", userRouter);
 app.use("/friends", friendRouter);
-app.use("/trip", tripRouter);
+app.use("/trips", tripRouter);
 app.use("/activity", activityRouter);
 app.use("/transaction", transactionRouter);
 

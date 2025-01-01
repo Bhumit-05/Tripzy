@@ -6,6 +6,7 @@ import Login from './Components/Login';
 import PrivateRoute from './Components/PrivateRoute';
 import CreateTrips from './Components/Create Trips';
 import Friends from './Components/Friend Page/Friends';
+import TripPage from './Components/TripPage';
 
 
 function App() {
@@ -43,6 +44,15 @@ function App() {
       ),
       errorElement : <Error/>
     },
+    {
+      path : "/trip/:tripId",
+      element : (
+        <PrivateRoute>
+          <TripPage/>
+        </PrivateRoute>
+      ),
+      errorElement : <Error/>
+    }
   ])
 
   return (

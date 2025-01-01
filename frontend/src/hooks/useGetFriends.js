@@ -7,6 +7,7 @@ const useGetFriends = () => {
     const friendList = useSelector(state => state.friends.friendList);
 
     const getList = async () => {
+        console.log("getList");
         const res = await fetch("http://localhost:4000/friends", {
             method : "GET",
             headers : {
@@ -14,7 +15,6 @@ const useGetFriends = () => {
                 "content-type" : "application/json"
             }
         })
-        console.log("fetching")
         const json = await res.json();
         dispatch(addFriendList(json));
     }    

@@ -1,12 +1,9 @@
 import React, { useRef, useState } from 'react'
-import { LOGIN_BG, WELCOME } from '../utils/constants';
+import { LOGIN_BG } from '../utils/constants';
 import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
-import { changeTokenState } from '../utils/userSlice';
 
 const Login = () => {
 
-  const dispatch = useDispatch();
   const [signIn, setSignin] = useState(0);
   const [signupMessage, setSignUpMessage] = useState("");
   const [signinMessage, setSignInMessage] = useState("");

@@ -16,4 +16,4 @@ const userSlice = createSlice({
 })
 
 export const {addUser, removeUser, changeTokenState} = userSlice.actions;
-export const userReducer = userSlice.reducer;
+export default userSlice.reducer;

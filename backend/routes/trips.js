@@ -63,10 +63,8 @@ tripRouter.get("/", userMiddleware, async function(req, res){
     const trips = await TripModel.find({
         travelers : userId,
     })
-
-    res.json({
-        trips : trips
-    })
+    
+    res.json(trips)
 })
 
 tripRouter.delete("/", userMiddleware, async function(req, res){
@@ -117,6 +115,14 @@ tripRouter.get("/getActivities", userMiddleware, async function(req, res){
     res.json({
         Activities : Activities
     })
+})
+
+tripRouter.get("/getDetails", async function(req, res){
+    const tripId = req.body.tripId;
+
+    const trip = await TripModel.findById(tripId);
+
+    res.json(trip);
 })
 
 module.exports = tripRouter;

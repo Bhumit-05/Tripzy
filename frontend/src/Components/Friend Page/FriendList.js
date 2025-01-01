@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { addFriendList } from '../../utils/friendSlice';
+import React from 'react'
+import {  useSelector } from 'react-redux';
 import FriendCard from './FriendCard';
 import useGetFriends from '../../hooks/useGetFriends';
 
@@ -11,7 +10,9 @@ const FriendList = () => {
 
     return (
         <div>
-            {friendList.length != 0 ? <FriendCard friend = {friendList[0]}/> : null}
+            {friendList.length !== 0 ? 
+            friendList.map(friend => <FriendCard key = {friend._id} friend={friend}/>)
+             : null}
         </div>
     )
 }
