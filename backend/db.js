@@ -15,7 +15,7 @@ const userSchema = new Schema({
 const tripSchema = new Schema({
     name : String,
     destination : String,
-    travelers : [ObjectId],
+    travellers : [ObjectId],
     startDate : Date,
     endDate : Date,
     createdAt : { type: Date, default : Date.now },

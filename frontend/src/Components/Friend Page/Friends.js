@@ -32,10 +32,10 @@ const Friends = () => {
   return (
     <div className="font-thin">
       <Header />
-      <h1 className="max-w-fit mx-auto text-5xl my-[100px]">Share the Adventure with Your Closest Companions!</h1>
+      <h1 className="max-w-fit mx-auto lg:text-5xl text-2xl my-[100px]">Share the Adventure with Your Closest Companions!</h1>
 
       <div className="border-black border-2 shadow-2xl w-full max-w-md mx-auto rounded-3xl px-4">
-        <h1 className="mx-auto max-w-fit text-4xl my-10">Add Friend</h1>
+        <h1 className="mx-auto max-w-fit lg:text-4xl text-2xl my-10">Add Friend</h1>
         <div className="w-full mx-auto mb-4 flex flex-col sm:flex-row items-center gap-2">
           <Input 
             ref={username}
@@ -55,7 +55,7 @@ const Friends = () => {
         </div>
       </div>
 
-      <h1 className='mx-auto max-w-fit mt-[150px] text-5xl underline mb-[100px]'>Friend List</h1>
+      <h1 className='mx-auto max-w-fit mt-[150px] lg:text-5xl text-3xl underline mb-[100px]'>Friend List</h1>
       <FriendList/>
     </div>
   )

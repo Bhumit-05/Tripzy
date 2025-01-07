@@ -39,7 +39,7 @@ tripRouter.post("/", userMiddleware, async function(req, res){
         const trip = await TripModel.create({
             name : name,
             destination : destination,
-            travelers : [req.userId],
+            travellers : [req.userId],
             startDate : startDate,
             endDate : endDate,
         });
@@ -61,10 +61,17 @@ tripRouter.get("/", userMiddleware, async function(req, res){
     userId = req.userId;
 
     const trips = await TripModel.find({
-        travelers : userId,
+        travellers : userId,
     })
-    
+
     res.json(trips)
+})
+
+tripRouter.get("/oneTrip/:tripId", userMiddleware, async function(req, res){
+    const {tripId} = req.params;
+
+    const trip = await TripModel.findById(tripId);
+    res.json(trip);
 })
 
 tripRouter.delete("/", userMiddleware, async function(req, res){
@@ -77,29 +84,29 @@ tripRouter.delete("/", userMiddleware, async function(req, res){
     })
 })
 
-tripRouter.patch("/addTraveler", userMiddleware, async function(req, res){
+tripRouter.post("/addTraveller", userMiddleware, async function(req, res){
     const tripId = req.body.tripId;
-    const travelerId = req.body.travelerId;
+    const travellerId = req.body.travellerId;
 
     await TripModel.findByIdAndUpdate(tripId, {
-        $push : {travelers : travelerId}
+        $push : {travellers : travellerId}
     });
 
     res.json({
-        message : "Traveler added to the trip successfully!"
+        message : "Traveller added to the trip successfully!"
     });
 })
 
-tripRouter.patch("/removeTraveler", userMiddleware, async function(req, res){
+tripRouter.delete("/removeTraveller", userMiddleware, async function(req, res){
     const tripId = req.body.tripId;
-    const travelerId = req.body.travelerId;
+    const travellerId = req.body.travellerId;
 
     await TripModel.findByIdAndUpdate(tripId, {
-        $pull : {travelers : travelerId}
+        $pull : {travellers : travellerId}
     });
 
     res.json({
-        message : "Traveler removed from the trip successfully!"
+        message : "Traveller removed from the trip successfully!"
     });
 })
 

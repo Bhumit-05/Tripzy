@@ -17,7 +17,6 @@ const useGetTrips = () => {
 
         const json = await res.json();
         dispatch(setTrips(json));
-        console.log(json);
     }
 
     useEffect(() => {

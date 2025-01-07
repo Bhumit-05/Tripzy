@@ -86,7 +86,8 @@ userRouter.post("/signin", async function(req, res) {
             
             res.json({
                 message : "Token sent",
-                token : token
+                token : token,
+                user : user
             });
         }
         else{
@@ -100,6 +101,16 @@ userRouter.post("/signin", async function(req, res) {
             message : error.errors[0].message
         })
     }
+})
+
+// Get user by id
+userRouter.get("/getUsername/:userId", async function(req, res){
+    const userId = req.params.userId;
+    const user = await UserModel.findById(userId);
+    res.json({
+        userId : userId,
+        username : user.username
+    });
 })
 
 module.exports = userRouter;

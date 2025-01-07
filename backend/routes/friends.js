@@ -81,7 +81,7 @@ friendRouter.post("/", userMiddleware,async function(req, res){
 friendRouter.get("/", userMiddleware, async function(req, res){
     // I am storing friend's username and not id because when i will be required to display the friends in frontend, so for each friend i will have to call the db to find the username for each respective userId. Since, each username is also unique, it will not create any problem
     try {
-        const userId = req.userId; // Assuming you're extracting this from middleware
+        const userId = req.userId;
         const user = await UserModel.findById(userId);
         
         if (!user) {

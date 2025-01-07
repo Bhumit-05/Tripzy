@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { LOGIN_BG } from '../utils/constants';
 import { useNavigate } from 'react-router';
+import { addUser } from '../utils/userSlice';
+import { useDispatch } from 'react-redux';
 
 const Login = () => {
 
@@ -8,6 +10,7 @@ const Login = () => {
   const [signupMessage, setSignUpMessage] = useState("");
   const [signinMessage, setSignInMessage] = useState("");
   const Navigate = useNavigate();
+  const dispatch = useDispatch();
 
   let email = useRef(null);
   let username = useRef(null);
@@ -35,9 +38,12 @@ const Login = () => {
 
         const json = await res.json();
         const token = json.token;
+        dispatch(addUser(json.user));
         setSignInMessage(json.message);
         if(token){
           localStorage.setItem("token", token);
+          // Had to store the user in local storage so that it doesn't get deleted on refresh
+          sessionStorage.setItem("user", JSON.stringify(json.user));
           Navigate("/");
         }
       }

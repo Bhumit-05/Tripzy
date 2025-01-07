@@ -22,7 +22,7 @@ const CreateTrips = () => {
         startDate = startDate?.current?.value || null;
         endDate = endDate?.current?.value || null;
 
-        const res = await fetch("http://localhost:4000/trip", {
+        const res = await fetch("http://localhost:4000/trips", {
             method : "POST",
             headers : {
                 "content-type" : "application/json",
@@ -45,11 +45,11 @@ const CreateTrips = () => {
     <div className='font-thin'>
         <Header/>
 
-        <h1 className='max-w-fit mx-auto text-5xl my-[100px]'>Plan Your Perfect Journey, One Trip at a Time</h1>
+        <h1 className='max-w-fit mx-auto lg:text-5xl text-2xl my-[100px]'>Plan Your Perfect Journey, One Trip at a Time</h1>
         <div className="relative py-3 sm:max-w-xl sm:mx-auto mt-[50px]">
             <div className="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow-2xl rounded-3xl sm:p-10">
                 <div className="max-w-md mx-auto">
-                    <h1 className='mx-auto max-w-fit font-thin text-4xl'>Trip Details</h1>
+                    <h1 className='mx-auto max-w-fit font-thin lg:text-4xl text-xl'>Trip Details</h1>
                     <div className="mt-5 grid grid-cols-1 gap-5">
                         <div>
                             <label className="font-semibold text-sm text-gray-600 pb-1 block">Trip Name</label>
