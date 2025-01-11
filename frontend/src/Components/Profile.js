@@ -8,9 +8,9 @@ const Profile = () => {
     const dispatch = useDispatch();
 
     const handleClick = () => {
-      localStorage.removeItem("token");
-      sessionStorage.removeItem("user");
-      dispatch({ type: 'RESET' }); 
+      localStorage.clear();
+      sessionStorage.clear();
+      dispatch({ type: "RESET" });
       Navigate("/login");
     }
 

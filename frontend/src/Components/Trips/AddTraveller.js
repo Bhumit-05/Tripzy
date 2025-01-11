@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { triggerRefresh } from "../../utils/userSlice";
 
 const AddTraveller = ({trip}) => {
@@ -60,7 +60,7 @@ const AddTraveller = ({trip}) => {
                     ))}
                 </select>
 
-                <button className='bg-blue-500 px-5 hover:bg-blue-600 text-white p-2 rounded-lg' onClick={handleAddClick}>Add</button>
+                <button className='bg-blue-500 duration-300 px-5 hover:bg-blue-600 text-white p-2 rounded-lg transition transform active:scale-90' onClick={handleAddClick}>Add</button>
            </div>
             <div>
                 <p className="hidden md:block lg:block ml-10 text-blue-500">{addMessage}</p>

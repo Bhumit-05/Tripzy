@@ -1,14 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './userSlice';
-import friendReducer from './friendSlice';
-import tripsReducer from './tripsSlice';
+import rootReducer from "./rootReducer";
 
 const AppStore = configureStore({
-    reducer : {
-        user : userReducer,
-        friends : friendReducer,
-        trips : tripsReducer
-    }
+    reducer : rootReducer
 })
 
 export default AppStore;

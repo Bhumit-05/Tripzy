@@ -3,8 +3,6 @@ import Header from './Header';
 
 const CreateTrips = () => {
 
-    let hide = 0;
-
     let tripName = useRef(null);
     let destination = useRef(null);
     let startDate = useRef(null);
@@ -74,7 +72,7 @@ const CreateTrips = () => {
                     <div className="mt-5">
                         <button
                             onClick={handleClick} 
-                            className="py-2 px-4 bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">
+                            className="py-2 px-4 bg-blue-500 hover:bg-blue-600 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg transform active:scale-95" type="submit">
                             Create Trip
                         </button>
                     </div>

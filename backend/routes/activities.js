@@ -23,8 +23,8 @@ activityRouter.post("/", userMiddleware, async function(req, res){
     })
 })
 
-activityRouter.get("/", userMiddleware, async function(req, res){
-    const tripId = req.body.tripId;
+activityRouter.get("/:tripId", userMiddleware, async function(req, res){
+    const tripId = req.params.tripId;
 
     const activities = await ActivityModel.find({
         tripId : tripId

@@ -56,7 +56,7 @@ const RemoveTraveller = ({travellerUsernames, tripId}) => {
                 ))}
             </select>
 
-            <button className='bg-red-500 hover:bg-red-600 text-white p-2 rounded-lg' onClick={handleRemoveClick}>Remove</button>
+            <button className='bg-red-500 duration-300 hover:bg-red-600 text-white p-2 rounded-lg transition transform active:scale-90' onClick={handleRemoveClick}>Remove</button>
             <div>
                 <p className='hidden md:block lg:block ml-10 text-red-500'>{removeMessage}</p>
             </div>

@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const tripsSlice = createSlice({
     name : "trips",
     initialState : {
-        tripsList : []
+        tripsList : [],
+        activities : []
     },
     reducers : {
         setTrips : (state, action) => {
@@ -14,9 +15,12 @@ const tripsSlice = createSlice({
         },
         removeTrip : (state, action) => {
             state.tripsList = state.tripsList.filter(trip => trip.tripId !== action.payload);
+        },
+        addActivity : (state, action) => {
+            state.activities = action.payload;
         }
     }
 })
 
-export const { setTrips, removeTrip, addSingleTrip } = tripsSlice.actions;
+export const { setTrips, removeTrip, addSingleTrip, addActivity } = tripsSlice.actions;
 export default tripsSlice.reducer;

@@ -25,12 +25,11 @@ const FriendCard = (friend) => {
     dispatch(removeFriend(friendName));
     const json = await res.json();
     getFriends();
-    console.log(json);
   }
 
   return (
-    <div className='w-[80%] h-[100px] border-black border-2 mx-auto rounded-2xl lg:w-[50%] flex flex-row items-center mb-10'>
-      <img src={friend.friend.dp_url} alt='dp' className='h-[80px] w-[80px] rounded-full my-auto lg:ml-[80px] ml-[10px] lg:mr-[80px] mr-[20px]'/>
+    <div className='w-[80%] h-[100px] border-black border-2 mx-auto rounded-2xl lg:w-[50%] flex flex-row items-center mb-10 hover:scale-105 transition-all duration-300'>
+      <img src={friend.friend.dp_url} alt='dp' className='h-[70px] w-[70px] border-black border-2 rounded-full my-auto lg:ml-[80px] ml-[10px] lg:mr-[80px] mr-[20px]'/>
       <div className='flex flex-row  justify-between items-center w-full'>
         <div className='font-normal'>
           <h1>Username : {friend.friend.username}</h1>
@@ -38,7 +37,7 @@ const FriendCard = (friend) => {
         </div>
         <button
           onClick={handleClick}
-          className='bg-red-600 h-fit p-2 rounded-2xl text-white hover:bg-red-700 duration-300 lg:mr-[90px] mr-[15px]'>
+          className='bg-red-600 h-fit p-2 rounded-2xl text-white hover:bg-red-700 duration-300 lg:mr-[90px] mr-[15px] transition transform active:scale-95'>
           Remove
         </button>
       </div>

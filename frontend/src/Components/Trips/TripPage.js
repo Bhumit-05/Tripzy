@@ -5,7 +5,11 @@ import useGetSingleTrip from '../../hooks/useGetSingleTrip';
 import AddTraveller from './AddTraveller';
 import { useSelector } from 'react-redux';
 import RemoveTraveller from './RemoveTraveller';
-import Activities from './Activities';
+import Activities from './Activity/Activities';
+import Transactions from './Transactions';
+import Loader from '../../Extra Components/Loader';
+import LeaveTripButton from './LeaveTrip';
+import TripDetails from './TripDetails';
 
 const TripPage = () => {
 
@@ -49,12 +53,17 @@ const TripPage = () => {
         tripId : trip?._id
     }
 
+    if (!trip) {
+        return <div><Loader/></div>;
+    }
+
     return (
         <div className='font-thin'>
             <Header/>
-            <h1 className='mx-auto max-w-fit lg:text-4xl my-20'>{trip?.name}</h1>
+            <h1 className='mx-auto max-w-fit lg:text-4xl text-3xl my-20'>{trip?.name}</h1>
 
-            <div>
+            <div className='mx-auto max-w-fit'>
+                <TripDetails trip={trip}/>
                 <div className='flex flex-row mb-5'>
                     <h2 className='font-normal mr-5 text-xl'>Travellers : </h2>
                     <h2 className='text-xl'>{travellerUsernames.join(", ")}</h2>
@@ -63,15 +72,18 @@ const TripPage = () => {
                 <RemoveTraveller {...props}/>
             </div>
 
-            <div className='grid grid-cols-2 mt-10'>
-                <div className='border-r-2 border-gray-500'>
-                    <h2 className='mx-auto max-w-fit'><Activities/></h2>
+            <div className='grid lg:grid-cols-2 sm:grid-rows-2 mt-10'>
+                <div className='lg:border-r-2 border-b-2 border-gray-500'>
+                    <h2 className='mx-auto max-w-fit'><Activities tripId = {tripId}/></h2>
                 </div>
-                <div>
-                    <h2 className='mx-auto max-w-fit text-3xl'>Content2</h2>
+                <div className='border-b-2 border-gray-500'>
+                    <h2 className='mx-auto max-w-fit'><Transactions/></h2>
                 </div>
             </div>
-            
+
+            <div className='mx-auto max-w-fit'>
+                <LeaveTripButton tripId = {tripId}/>
+            </div>
         </div>
     )
 }

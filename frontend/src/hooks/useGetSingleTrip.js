@@ -21,7 +21,7 @@ const useGetSingleTrip = (tripId) => {
 
     useEffect(() => {
         getTrip();
-    }, [refresh])
+    }, [refresh, tripId])
 
     return trip;
 }

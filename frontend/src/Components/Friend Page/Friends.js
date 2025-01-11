@@ -43,7 +43,7 @@ const Friends = () => {
           />
           <button 
             onClick={handleClick}
-            className="w-[80px] h-[50px] bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+            className="w-[80px] h-[50px] duration-300 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition transform active:scale-95">
             Add
           </button>
         </div>
@@ -55,7 +55,7 @@ const Friends = () => {
         </div>
       </div>
 
-      <h1 className='mx-auto max-w-fit mt-[150px] lg:text-5xl text-3xl underline mb-[100px]'>Friend List</h1>
+      <h1 className='mx-auto max-w-fit mt-[150px] lg:text-4xl text-3xl border-b-2 border-gray-500 mb-[100px]'>Friend List</h1>
       <FriendList/>
     </div>
   )

@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../Header';
 import useGetTrips from '../../hooks/useGetTrips';
 import { useSelector } from 'react-redux';
 import TripCard from './TripCard';
+import useGetFriends from '../../hooks/useGetFriends';
 
 const Home = () => {
 
   useGetTrips();
   const tripsList = useSelector(state => state.trips.tripsList);
+  const getFriends = useGetFriends();
+  useEffect(() => {
+      getFriends();
+  }, [])
 
   return (
     <div className='font-thin'>

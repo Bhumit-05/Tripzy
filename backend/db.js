@@ -29,7 +29,8 @@ const tripSchema = new Schema({
 const activitySchema = new Schema({
     tripId : ObjectId,
     activity : String,
-    date : Date
+    date : Date,
+    status : {type : Boolean, default : false}
 })
 
 const transactionSchema = new Schema({
