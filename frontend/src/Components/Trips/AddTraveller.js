@@ -6,7 +6,7 @@ const AddTraveller = ({trip}) => {
     
     const [selectedFriend, setSelectedFriend] = useState("");
     const [addMessage, setAddMessage] = useState("");
-    const friends = JSON.parse(sessionStorage.getItem("friends"));
+    const friends = JSON.parse(localStorage.getItem("friends"));
     const tripId = trip?._id;
     const dispatch = useDispatch();
 
@@ -16,7 +16,7 @@ const AddTraveller = ({trip}) => {
 
     const handleAddClick = async () => {
 
-        const friends = JSON.parse(sessionStorage.getItem("friends"));
+        const friends = JSON.parse(localStorage.getItem("friends"));
         const userId = friends.find(friend => friend.username === selectedFriend)?._id;
         
         if (!userId) {

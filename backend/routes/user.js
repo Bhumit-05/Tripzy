@@ -4,6 +4,7 @@ const { z } = require("zod");
 const { UserModel } = require("../db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { userMiddleware } = require("../middlewares/user");
 require('dotenv').config();
 
 const userRouter = Router();
@@ -111,6 +112,14 @@ userRouter.get("/getUsername/:userId", async function(req, res){
         userId : userId,
         username : user.username
     });
+})
+
+userRouter.get("/getUser", userMiddleware, async function(req, res) {
+    const userId = req.userId;
+
+    const user = await UserModel.findById(userId);
+
+    res.json(user);
 })
 
 module.exports = userRouter;

@@ -7,7 +7,7 @@ const useGetFriends = () => {
     const friendList = useSelector(state => state.friends.friendList);
 
     const getList = async () => {
-        const friends = sessionStorage.getItem("friends");
+        const friends = localStorage.getItem("friends");
         const res = await fetch("http://localhost:4000/friends", {
             method : "GET",
             headers : {
@@ -19,9 +19,9 @@ const useGetFriends = () => {
         dispatch(addFriendList(json));
 
         if(friends){
-            sessionStorage.removeItem("friends");
+            localStorage.removeItem("friends");
         }
-        sessionStorage.setItem("friends", JSON.stringify(json));
+        localStorage.setItem("friends", JSON.stringify(json));
     }    
 
     // Reducing API calls

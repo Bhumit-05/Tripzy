@@ -5,6 +5,7 @@ const userSlice = createSlice({
     initialState : {
         user : null,
         refresh : 0,
+        editActivityButton : true
     },
     reducers : {
         addUser : (state, action) => {
@@ -15,9 +16,12 @@ const userSlice = createSlice({
         },
         triggerRefresh : (state) => {
             state.refresh += 1;
+        },
+        toggleEditActivityButton : (state) => {
+            state.editActivityButton = !state.editActivityButton;
         }
     }
 })
 
-export const {addUser, removeUser, triggerRefresh} = userSlice.actions;
+export const {addUser, removeUser, triggerRefresh, toggleEditActivityButton} = userSlice.actions;
 export default userSlice.reducer;

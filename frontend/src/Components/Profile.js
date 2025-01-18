@@ -9,12 +9,12 @@ const Profile = () => {
 
     const handleClick = () => {
       localStorage.clear();
-      sessionStorage.clear();
+      localStorage.clear();
       dispatch({ type: "RESET" });
       Navigate("/login");
     }
 
-    const user = JSON.parse(sessionStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("user"));
 
     return (
         <div>

@@ -13,10 +13,10 @@ const RemoveTraveller = ({travellerUsernames, tripId}) => {
     const dispatch = useDispatch();
 
     const handleRemoveClick = async () => {
-        const friends = JSON.parse(sessionStorage.getItem("friends"));
+        const friends = JSON.parse(localStorage.getItem("friends"));
         const traveller = friends.find(friend => friend.username === selectedTraveller);
 
-        if(selectedTraveller===(JSON.parse(sessionStorage.getItem("user"))).username){
+        if(selectedTraveller===(JSON.parse(localStorage.getItem("user"))).username){
             setRemoveMessage("You can't remove yourself!");
             return;
         }

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Checkbox = ({ checked, onChange }) => {
+const CrossCheckbox = ({ checked, onChange }) => {
   return (
     <StyledWrapper>
       <label className="container">
@@ -14,7 +14,7 @@ const Checkbox = ({ checked, onChange }) => {
 
 const StyledWrapper = styled.div`
   .container {
-    --input-focus: #2d8cf0;
+    --input-focus: #f44336;
     --input-out-of-focus: #ccc;
     --bg-color: #fff;
     --bg-color-alt: #666;
@@ -41,37 +41,49 @@ const StyledWrapper = styled.div`
     transition: all 0.3s;
   }
 
-  /* Hover effect when unchecked */
   .container:hover .checkmark {
-    background-color: #999; /* Darker gray for hover when unchecked */
+    background-color: #999;
   }
 
-  /* Background color when checked */
   .container input:checked ~ .checkmark {
     background-color: var(--input-focus);
   }
 
-  /* Hover effect when checked */
   .container input:checked:hover ~ .checkmark {
-    background-color: #2563eb; /* Darker blue */
+    background-color: #e53935;
   }
 
   .checkmark:after {
     content: "";
-    width: 7px;
-    height: 15px;
+    width: 15px; /* Wider for the cross */
+    height: 2px; /* Thicker lines for cross */
     position: absolute;
-    top: 2px;
-    left: 8px;
-    display: none;
-    border: solid var(--bg-color);
-    border-width: 0 2.5px 2.5px 0;
-    transform: rotate(45deg);
+    top: 50%; /* Vertically centered */
+    left: 50%; /* Horizontally centered */
+    transform: translate(-50%, -50%) rotate(45deg);
+    background-color: #fff; /* White color for the cross */
+    display: none; /* Initially hidden */
   }
 
   .container input:checked ~ .checkmark:after {
     display: block;
   }
+
+  .checkmark:before {
+    content: "";
+    width: 15px;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    background-color: #fff;
+    display: none;
+  }
+
+  .container input:checked ~ .checkmark:before {
+    display: block;
+  }
 `;
 
-export default Checkbox;
+export default CrossCheckbox;

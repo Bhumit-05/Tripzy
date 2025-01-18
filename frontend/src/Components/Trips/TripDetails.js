@@ -1,7 +1,6 @@
 import React from 'react'
 
 const TripDetails = ({trip}) => {
-    console.log(trip);
     const formattedStartDate = new Date(trip.startDate).toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",

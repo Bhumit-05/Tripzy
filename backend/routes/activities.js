@@ -63,4 +63,29 @@ activityRouter.put("/", userMiddleware, async function(req, res){
     })
 })
 
+activityRouter.get("/getState/:activityId", userMiddleware, async function(req, res){
+    const activityId = req.params.activityId;
+    
+    const activity = await ActivityModel.findById(activityId);
+
+    res.json({
+        status : activity.status
+    })
+})
+
+activityRouter.post("/setState/:activityId", userMiddleware, async function(req, res){
+    const activityId = req.params.activityId;
+
+    const status = req.body.status;
+    await ActivityModel.findByIdAndUpdate(activityId, {
+        status : status
+    },{
+        new : true // returns the updated document
+    })
+
+    res.json({
+        "status" : status
+    })
+})
+
 module.exports = activityRouter;

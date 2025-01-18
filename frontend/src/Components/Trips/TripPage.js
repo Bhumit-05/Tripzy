@@ -6,7 +6,7 @@ import AddTraveller from './AddTraveller';
 import { useSelector } from 'react-redux';
 import RemoveTraveller from './RemoveTraveller';
 import Activities from './Activity/Activities';
-import Transactions from './Transactions';
+import Transactions from './Transactions/Transactions';
 import Loader from '../../Extra Components/Loader';
 import LeaveTripButton from './LeaveTrip';
 import TripDetails from './TripDetails';
@@ -68,11 +68,13 @@ const TripPage = () => {
                     <h2 className='font-normal mr-5 text-xl'>Travellers : </h2>
                     <h2 className='text-xl'>{travellerUsernames.join(", ")}</h2>
                 </div>
-                <AddTraveller trip={trip}/>
-                <RemoveTraveller {...props}/>
+                <div className=''>
+                    <AddTraveller trip={trip}/>
+                    <RemoveTraveller {...props}/>
+                </div>
             </div>
 
-            <div className='grid lg:grid-cols-2 sm:grid-rows-2 mt-10'>
+            <div className='grid lg:grid-cols-2 mt-10'>
                 <div className='lg:border-r-2 border-b-2 border-gray-500'>
                     <h2 className='mx-auto max-w-fit'><Activities tripId = {tripId}/></h2>
                 </div>

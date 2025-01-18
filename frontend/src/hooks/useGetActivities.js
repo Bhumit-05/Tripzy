@@ -8,7 +8,7 @@ const useGetActivities = (tripId) => {
     const activities = useSelector(state => state.trips.activities);
 
     const getActivities = async () => {
-        const res = await fetch(`http://localhost:4000/activity/${tripId.tripId}`, {
+        const res = await fetch(`http://localhost:4000/activity/${tripId}`, {
             headers : {
                 "token" : localStorage.getItem("token")
             }

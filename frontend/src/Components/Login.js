@@ -43,7 +43,7 @@ const Login = () => {
         if(token){
           localStorage.setItem("token", token);
           // Had to store the user in local storage so that it doesn't get deleted on refresh
-          sessionStorage.setItem("user", JSON.stringify(json.user));
+          localStorage.setItem("user", JSON.stringify(json.user));
           Navigate("/");
         }
       }

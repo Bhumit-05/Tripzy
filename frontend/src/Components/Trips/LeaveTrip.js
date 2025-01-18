@@ -6,7 +6,7 @@ const LeaveTripButton = (tripId) => {
   const Navigate = useNavigate();
 
   const handleLeave = async () => {
-    const user = JSON.parse(sessionStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("user"));
     const res = await fetch("http://localhost:4000/trips/removeTraveller", {
       method: "DELETE",
       headers: {

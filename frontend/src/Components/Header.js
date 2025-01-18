@@ -1,10 +1,24 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router';
+import React, { useEffect } from 'react'
+import { Link } from 'react-router';
 import { LOGO } from '../utils/constants';
 
 const Header = () => {
 
-  const dp_url = JSON.parse(sessionStorage.getItem("user")).dp_url;
+  const dp_url = JSON.parse(localStorage.getItem("user"))?.dp_url;
+
+  const getUser = async () => {
+    const res = await fetch("http://localhost:4000/user/getUser", {
+      headers : {
+        "token" : localStorage.getItem("token")
+      }
+    });
+    const json = await res.json();
+    localStorage.setItem("user", JSON.stringify(json));
+  }
+
+  useEffect(() => {
+    getUser();
+  }, [])
 
   return (
     <div className=' h-[100px] bg-transparent border-black border-b-2 flex justify-between items-center relative'>
