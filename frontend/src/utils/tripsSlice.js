@@ -18,7 +18,7 @@ const tripsSlice = createSlice({
         },
         addActivity : (state, action) => {
             state.activities = action.payload;
-        }
+        },
     }
 })
 

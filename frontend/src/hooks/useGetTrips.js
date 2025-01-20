@@ -19,12 +19,6 @@ const useGetTrips = () => {
         dispatch(setTrips(json));
     }
 
-    useEffect(() => {
-        if(tripsList.length===0){
-            getTrips();
-        }
-    }, [tripsList.length])
-
   return getTrips;
 }
 

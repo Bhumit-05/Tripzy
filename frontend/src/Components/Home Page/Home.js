@@ -7,12 +7,19 @@ import useGetFriends from '../../hooks/useGetFriends';
 
 const Home = () => {
 
-  useGetTrips();
   const tripsList = useSelector(state => state.trips.tripsList);
   const getFriends = useGetFriends();
+  const getTrips = useGetTrips();
+  
   useEffect(() => {
-      getFriends();
+    getFriends();
   }, [])
+
+  useEffect(() => {
+    if(tripsList.length===0){
+      getTrips();
+    }
+  }, [tripsList.length])
 
   return (
     <div className='font-thin'>

@@ -20,6 +20,10 @@ const TripDetails = ({trip}) => {
             <h2 className='text-xl'>{trip.destination}</h2>
         </div>
         <div className='flex flex-row mb-5'>
+            <h2 className='font-normal mr-5 text-xl'>Currency : </h2>
+            <h2 className='text-xl'>{trip.currencyCode}</h2>
+        </div>
+        <div className='flex flex-row mb-5'>
             <h2 className='font-normal mr-5 text-xl'>Start Date : </h2>
             <h2 className='text-xl'>{formattedStartDate}</h2>
         </div>

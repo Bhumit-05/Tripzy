@@ -10,6 +10,7 @@ import Transactions from './Transactions/Transactions';
 import Loader from '../../Extra Components/Loader';
 import LeaveTripButton from './LeaveTrip';
 import TripDetails from './TripDetails';
+import useGetTripCurrencyDetails from '../../hooks/useGetTripCurrencyDetails';
 
 const TripPage = () => {
 
@@ -18,6 +19,11 @@ const TripPage = () => {
     
     const [travellerUsernames, setTravellerUsernames] = useState([]);
     const triggerRefresh = useSelector(state => state.user.refresh);
+    const getTripCurrencyDetails = useGetTripCurrencyDetails(trip?.currencyCode);
+
+    useEffect(() => {
+        getTripCurrencyDetails();
+    }, [])
 
     const getUsernames = async (travellerId) => {
         const res = await fetch(`http://localhost:4000/user/getUsername/${travellerId}`)
@@ -79,12 +85,12 @@ const TripPage = () => {
                     <h2 className='mx-auto max-w-fit'><Activities tripId = {tripId}/></h2>
                 </div>
                 <div className='border-b-2 border-gray-500'>
-                    <h2 className='mx-auto max-w-fit'><Transactions/></h2>
+                    <h2 className='mx-auto max-w-fit'><Transactions currency={trip.currencyCode}/></h2>
                 </div>
             </div>
 
             <div className='mx-auto max-w-fit'>
-                <LeaveTripButton tripId = {tripId}/>
+                <LeaveTripButton tripId = {tripId} NoOfTravellers={travellerUsernames.length}/>
             </div>
         </div>
     )

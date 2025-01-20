@@ -1,5 +1,7 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Header from './Header';
+import useGetCurrencies from '../hooks/useGetCurrencies';
+import { useSelector } from 'react-redux';
 
 const CreateTrips = () => {
 
@@ -7,9 +9,18 @@ const CreateTrips = () => {
     let destination = useRef(null);
     let startDate = useRef(null);
     let endDate = useRef(null);
+    let currency = useRef(null);
 
     const [isSubmit, setIsSubmit] = useState(0);
     const [message, setMessage] = useState("");
+    const getCurrencies = useGetCurrencies();
+    const currencies = useSelector(state => state.currency.currencies);
+    
+    useEffect(() => {
+        if(currencies.length===0){
+            getCurrencies();
+        }
+    }, [currencies.length])
 
     const handleClick = async () => {
         if(isSubmit===1) return;  // done becuase, if the form is submited and then again submitted then there is a possibility then it didn't complete the req and we gave a req again, this doesnt let the useState var update properly
@@ -19,6 +30,7 @@ const CreateTrips = () => {
         destination = destination?.current?.value || "";
         startDate = startDate?.current?.value || null;
         endDate = endDate?.current?.value || null;
+        currency = currency?.current?.value || null;
 
         const res = await fetch("http://localhost:4000/trips", {
             method : "POST",
@@ -30,7 +42,8 @@ const CreateTrips = () => {
                 "name" : tripName,
                 "destination" : destination,
                 "startDate" : startDate,
-                "endDate" : endDate
+                "endDate" : endDate,
+                "currency" : currency
             })
         })
 
@@ -58,6 +71,18 @@ const CreateTrips = () => {
                             <input ref={destination} className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full focus:border-blue-500 focus:ring-2 focus:ring-blue-500" />
                         </div>
                     </div>
+
+                    <div className='flex flex-col mt-5'>
+                        <label htmlFor="currency-select" className='font-semibold text-sm text-gray-600 pb-1 block'>Currency</label>
+                        <select ref={currency} id="currency-select" className='border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full focus:border-blue-500 focus:ring-2 focus:ring-blue-500'>
+                            {currencies.map((currency) => (
+                                <option key={currency.currencyCode} value={currency.currencyCode}>
+                                    {currency.currencyCode} &nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp; {currency.symbol}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
                     <div className="mt-5 grid grid-cols-1 gap-5">
                         <div>
                             <label className="font-semibold text-sm text-gray-600 pb-1 block">Start date</label>

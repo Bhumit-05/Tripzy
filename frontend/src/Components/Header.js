@@ -1,10 +1,22 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router';
 import { LOGO } from '../utils/constants';
+import { useSelector } from 'react-redux';
+import useGetUserCurrencyDetails from '../hooks/useGetUserCurrencyDetails';
 
 const Header = () => {
 
   const dp_url = JSON.parse(localStorage.getItem("user"))?.dp_url;
+  const userCurrency = useSelector(state => state.currency.userCurrency);
+  const user = JSON.parse(localStorage.getItem("user"));
+  const getUserCurrencyDetails = useGetUserCurrencyDetails(user.currencyCode);
+  console.log(user.currencyCode)
+
+  useEffect(() => {
+    if(userCurrency===null){
+      getUserCurrencyDetails();
+    }
+  }, [])
 
   const getUser = async () => {
     const res = await fetch("http://localhost:4000/user/getUser", {

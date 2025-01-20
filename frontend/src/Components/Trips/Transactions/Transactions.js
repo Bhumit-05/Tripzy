@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import AddTransaction from './AddTransaction';
+import useGetTripCurrencyDetails from '../../../hooks/useGetTripCurrencyDetails';
 
-const Transactions = () => {
+// add transaction
+// convert from user currency to trip currency using conversion rates ( first convert to usd then to other currency )
+// my transactions (total sum), trip transactions (total sum)
+
+
+const Transactions = (currencyCode) => {
+
+  const getTripCurrencyDetails = useGetTripCurrencyDetails(currencyCode.currency);
+
+  useEffect(() => {
+    getTripCurrencyDetails();
+  }, [])
+
   return (
     <div>
-        <h1 className='text-3xl border-b-2 border-gray-500 mb-10'>Transactions</h1>
+      <h1 className='border-b-2 border-gray-500 text-3xl mb-20 mx-auto max-w-fit'>Transactions</h1>
+      
+      <AddTransaction/>
     </div>
   )
 }

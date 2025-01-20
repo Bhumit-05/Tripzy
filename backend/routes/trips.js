@@ -8,7 +8,7 @@ const tripRouter = Router();
 
 tripRouter.post("/", userMiddleware, async function(req, res){
 
-    const { name, destination, startDate, endDate } = req.body;
+    const { name, destination, startDate, endDate, currency } = req.body;
 
     if(name===""){
         res.json({
@@ -42,6 +42,7 @@ tripRouter.post("/", userMiddleware, async function(req, res){
             travellers : [req.userId],
             startDate : startDate,
             endDate : endDate,
+            currencyCode : currency
         });
     
         res.json({

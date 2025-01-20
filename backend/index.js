@@ -6,6 +6,7 @@ const friendRouter = require("./routes/friends");
 const tripRouter = require("./routes/trips");
 const activityRouter = require("./routes/activities");
 const transactionRouter = require("./routes/transaction");
+const currencyRouter = require("./routes/currencies");
 const cors = require('cors');
 const app = express();
 
@@ -17,6 +18,7 @@ app.use("/friends", friendRouter);
 app.use("/trips", tripRouter);
 app.use("/activity", activityRouter);
 app.use("/transaction", transactionRouter);
+app.use("/currency", currencyRouter);
 
 function main(){
     mongoose.connect(process.env.MONGODB_CONNECTION_STRING);

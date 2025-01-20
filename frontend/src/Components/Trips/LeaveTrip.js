@@ -1,9 +1,26 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import useGetTrips from '../../hooks/useGetTrips';
 
-const LeaveTripButton = (tripId) => {
+const LeaveTripButton = ({ tripId, NoOfTravellers }) => {
   const [showModal, setShowModal] = useState(false);
   const Navigate = useNavigate();
+  const getTrips = useGetTrips();
+
+  const deleteTrip = async () => {
+    const res = await fetch(`http://localhost:4000/trips`, {
+      method : "Delete",
+      headers : {
+        "token" : localStorage.getItem("token"),
+        "content-type" : "application/json"
+      },
+      body : JSON.stringify({
+        tripId : tripId
+      })
+    })
+    const json = await res.json();
+    console.log(json);
+  }
 
   const handleLeave = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -21,6 +38,11 @@ const LeaveTripButton = (tripId) => {
 
     const json = await res.json();
     Navigate("/");
+    getTrips();
+
+    if(NoOfTravellers===1){
+      deleteTrip();
+    }
   };
 
   const handleConfirmLeave = () => {
@@ -37,8 +59,7 @@ const LeaveTripButton = (tripId) => {
       <div className="mx-auto max-w-fit">
         <button
           onClick={() => setShowModal(true)}
-          className="bg-red-200 hover:bg-red-100 p-2 rounded-xl duration-300 transition transform active:scale-90"
-        >
+          className="bg-red-200 hover:bg-red-100 p-2 rounded-xl duration-300 transition transform active:scale-90">
           Leave Trip
         </button>
       </div>
@@ -50,14 +71,12 @@ const LeaveTripButton = (tripId) => {
             <div className="flex items-center justify-center space-x-4">
               <button
                 onClick={handleConfirmLeave}
-                className="bg-blue-500 text-white w-20 px-4 py-2 rounded-md hover:bg-blue-600 transition duration-200"
-              >
+                className="bg-blue-500 text-white w-20 px-4 py-2 rounded-md hover:bg-blue-600 transition duration-200">
                 OK
               </button>
               <button
                 onClick={handleCancelLeave}
-                className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-200"
-              >
+                className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-200">
                 Cancel
               </button>
             </div>

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { DEFAULT_DP } = require("../frontend/src/utils/constants");
+const { symbol } = require("zod");
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Types.ObjectId;
 
@@ -10,6 +11,8 @@ const userSchema = new Schema({
     username : {type : String, required : true, unique: true},
     fullName : {type : String, required : true},
     password : {type : String, required : true},
+    currencyCode : {type : String, default : "INR"},
+    conversionRateToUSD : {type : Number, default : 86.5471}
 })
 
 const tripSchema = new Schema({
@@ -23,7 +26,9 @@ const tripSchema = new Schema({
         type: String,
         enum: ["not_started", "in_progress", "completed"],
         default: "not_started",
-      },
+    },
+    currencyCode : {type : String, default : "INR"},
+    conversionRateToUSD : {type : Number, default : 86.5471}
 })
 
 const activitySchema = new Schema({
@@ -41,14 +46,22 @@ const transactionSchema = new Schema({
     date : { type: Date, default: Date.now }
 })
 
+const currencySchema = new Schema({
+    currencyCode : {type : String},
+    symbol : String,
+    rateToUSD : Number
+})
+
 const UserModel = mongoose.model("users", userSchema);
 const TripModel = mongoose.model("trips", tripSchema);
 const ActivityModel = mongoose.model("activities", activitySchema);
 const TransactionModel = mongoose.model("transactions", transactionSchema);
+const CurrencyModel = mongoose.model("currencies", currencySchema);
 
 module.exports = {
     UserModel,
     TripModel,
     ActivityModel,
-    TransactionModel
+    TransactionModel,
+    CurrencyModel
 }
