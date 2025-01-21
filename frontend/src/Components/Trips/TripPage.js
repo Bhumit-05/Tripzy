@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import Header from '../Header';
 import useGetSingleTrip from '../../hooks/useGetSingleTrip';
 import AddTraveller from './AddTraveller';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import RemoveTraveller from './RemoveTraveller';
 import Activities from './Activity/Activities';
 import Transactions from './Transactions/Transactions';
@@ -11,11 +11,13 @@ import Loader from '../../Extra Components/Loader';
 import LeaveTripButton from './LeaveTrip';
 import TripDetails from './TripDetails';
 import useGetTripCurrencyDetails from '../../hooks/useGetTripCurrencyDetails';
+import { addTravellerUsernames, setTripId } from '../../utils/tripsSlice';
 
 const TripPage = () => {
 
     const {tripId} = useParams();
     const [trip, setTrip] = useState(null);
+    const dispatch = useDispatch();
     
     const [travellerUsernames, setTravellerUsernames] = useState([]);
     const triggerRefresh = useSelector(state => state.user.refresh);
@@ -23,6 +25,7 @@ const TripPage = () => {
 
     useEffect(() => {
         getTripCurrencyDetails();
+        dispatch(setTripId(tripId));
     }, [])
 
     const getUsernames = async (travellerId) => {
@@ -44,6 +47,7 @@ const TripPage = () => {
                 })
                 );
                 setTravellerUsernames(usernamesAndIds.map(usernamesAndId => usernamesAndId.username));
+                dispatch(addTravellerUsernames(usernamesAndIds.map(usernamesAndId => usernamesAndId.username)));
             }
         };
         fetchTravellerUsernames();

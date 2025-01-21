@@ -9,8 +9,7 @@ const Header = () => {
   const dp_url = JSON.parse(localStorage.getItem("user"))?.dp_url;
   const userCurrency = useSelector(state => state.currency.userCurrency);
   const user = JSON.parse(localStorage.getItem("user"));
-  const getUserCurrencyDetails = useGetUserCurrencyDetails(user.currencyCode);
-  console.log(user.currencyCode)
+  const getUserCurrencyDetails = useGetUserCurrencyDetails(user?.currencyCode);
 
   useEffect(() => {
     if(userCurrency===null){

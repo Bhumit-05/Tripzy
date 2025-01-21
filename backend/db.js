@@ -41,7 +41,7 @@ const activitySchema = new Schema({
 const transactionSchema = new Schema({
     userId : ObjectId,
     tripId : ObjectId,
-    amount : Number,
+    amountInUSD : Number,
     description : String,
     date : { type: Date, default: Date.now }
 })

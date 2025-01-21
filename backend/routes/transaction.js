@@ -8,14 +8,37 @@ const transactionRouter = Router();
 transactionRouter.post("/", userMiddleware, async function(req, res){
     const userId = req.body.userId;
     const tripId = req.body.tripId;
-    const amount = req.body.amount;
+    const amountInUSD = req.body.amountInUSD;
     const description = req.body.description;
+    const date = req.body.date;
+
+    if(!amountInUSD){
+        res.json({
+            message : "Enter an amount"
+        })
+        return;
+    }
+
+    if(description===""){
+        res.json({
+            message : "Enter a description"
+        })
+        return;
+    }
+
+    if(!date){
+        res.json({
+            message : "Enter a date"
+        })
+        return;
+    }
     
     await TransactionModel.create({
         userId : userId,
         tripId : tripId,
-        amount : amount,
+        amountInUSD : amountInUSD,
         description : description,
+        date : date
     })
 
     res.json({

@@ -89,13 +89,14 @@ const Activities = (tripId) => {
       </div>
       {sortedActivities.map(activity => <ActivityCard key={activity._id} Activity={activity}/>)}
 
+      {activities.length>0 && 
       <div className="flex justify-center mb-10">
         <button 
           onClick={handleEditClick}
           className="bg-blue-500 duration-300 h-10 w-20 hover:bg-blue-600 text-white p-2 rounded-lg transition transform active:scale-90">
           {edit? "Edit" : "Done"}
         </button>
-      </div>
+      </div>}
 
     </div>
   )

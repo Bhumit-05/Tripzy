@@ -19,7 +19,6 @@ const LeaveTripButton = ({ tripId, NoOfTravellers }) => {
       })
     })
     const json = await res.json();
-    console.log(json);
   }
 
   const handleLeave = async () => {
