@@ -5,7 +5,10 @@ const userSlice = createSlice({
     initialState : {
         user : null,
         refresh : 0,
-        editActivityButton : true
+        editActivityButton : true,
+        editTransactionsButton : true,
+        showTripTransactions : false,
+        showUserTransactions : false,
     },
     reducers : {
         addUser : (state, action) => {
@@ -19,9 +22,18 @@ const userSlice = createSlice({
         },
         toggleEditActivityButton : (state) => {
             state.editActivityButton = !state.editActivityButton;
+        },
+        toggleEditTransactionButton : (state) => {
+            state.editTransactionsButton = !state.editTransactionsButton;
+        },
+        toggleShowTripTransac : (state) => {
+            state.showTripTransactions = !state.showTripTransactions;
+        },
+        toggleShowUserTransac : (state) => {
+            state.showUserTransactions = !state.showUserTransactions;
         }
     }
 })
 
-export const {addUser, removeUser, triggerRefresh, toggleEditActivityButton} = userSlice.actions;
+export const {addUser, removeUser, triggerRefresh, toggleEditActivityButton, toggleEditTransactionButton, toggleShowUserTransac, toggleShowTripTransac} = userSlice.actions;
 export default userSlice.reducer;

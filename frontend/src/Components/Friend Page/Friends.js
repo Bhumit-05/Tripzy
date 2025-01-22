@@ -32,31 +32,40 @@ const Friends = () => {
   return (
     <div className="font-thin">
       <Header />
-      <h1 className="max-w-fit mx-auto lg:text-5xl text-2xl my-[100px]">Share the Adventure with Your Closest Companions!</h1>
+      <h1 className="max-w-fit mx-auto text-center text-3xl lg:text-5xl my-16 text-gray-800 tracking-wide">
+        Share the Adventure with Your Closest Companions!
+      </h1>
 
-      <div className="border-black border-2 shadow-2xl w-full max-w-md mx-auto rounded-3xl px-4">
-        <h1 className="mx-auto max-w-fit lg:text-4xl text-2xl my-10">Add Friend</h1>
-        <div className="w-full mx-auto mb-4 flex flex-col sm:flex-row items-center gap-2">
+      <div className="bg-gradient-to-r from-white to-gray-100 shadow-lg border border-gray-300 w-full max-w-md mx-auto rounded-2xl p-6">
+        <h1 className="text-center text-2xl lg:text-3xl font-extralight text-gray-700 my-6">
+          Add Friend
+        </h1>
+        <div className="w-full mx-auto mb-4 flex flex-col sm:flex-row items-center gap-4">
           <Input 
             ref={username}
-            className="w-full sm:w-auto h-[50px]" 
+            className="w-full sm:w-auto h-[50px] px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            placeholder="Enter Username"
           />
           <button 
             onClick={handleClick}
-            className="w-[80px] h-[50px] duration-300 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition transform active:scale-95">
+            className="w-[80px] h-[50px] bg-blue-500 text-white text-lg rounded-lg shadow-md hover:bg-blue-600 transition-transform duration-300 transform active:scale-95">
             Add
           </button>
         </div>
 
-        <div className="w-full mt-6 mb-6 min-h-[30px]">
-          <h1 className="text-red-500 text-lg font-normal text-center">
-            {addMessage}
+        <div className="mt-6 text-center">
+          <h1 className={`text-lg font-normal ${addMessage ? 'text-red-500' : 'text-gray-500'}`}>
+            {addMessage || "Enter a username to add a friend."}
           </h1>
         </div>
       </div>
 
-      <h1 className='mx-auto max-w-fit mt-[150px] lg:text-4xl text-3xl border-b-2 border-gray-500 mb-[100px]'>Friend List</h1>
-      <FriendList/>
+      <h1 className="mx-auto text-center text-4xl text-gray-800 mt-24 mb-12 tracking-wide border-b-2 border-gray-300 pb-2">
+        Friend List
+      </h1>
+      <div className="max-w-4xl mx-auto px-4">
+        <FriendList />
+      </div>
     </div>
   )
 }

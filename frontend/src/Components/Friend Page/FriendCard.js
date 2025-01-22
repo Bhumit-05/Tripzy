@@ -28,20 +28,31 @@ const FriendCard = (friend) => {
   }
 
   return (
-    <div className='w-[80%] h-[100px] border-black border-2 mx-auto rounded-2xl lg:w-[50%] flex flex-row items-center mb-10 hover:scale-105 transition-all duration-300'>
-      <img src={friend.friend.dp_url} alt='dp' className='h-[70px] w-[70px] border-black border-2 rounded-full my-auto lg:ml-[80px] ml-[10px] lg:mr-[80px] mr-[20px]'/>
-      <div className='flex flex-row  justify-between items-center w-full'>
-        <div className='font-normal'>
-          <h1>Username : {friend.friend.username}</h1>
-          <h1>Name : {friend.friend.fullName}</h1>
-        </div>
+    <div className="w-[80%]  mx-auto bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-300 rounded-xl flex items-center shadow-md mb-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+      <div className="p-4">
+        <img
+          src={friend.friend.dp_url}
+          alt="dp"
+          className="h-16 w-16 lg:h-20 lg:w-20 border-4 border-gray-200 rounded-full object-cover"
+        />
+      </div>
+      <div className="flex flex-col flex-grow pl-4">
+        <h1 className="text-lg lg:text-xl font-semibold text-gray-800">
+          {friend.friend.username || "Username"}
+        </h1>
+        <h2 className="text-sm lg:text-base text-gray-500">
+          {friend.friend.fullName || "Full Name"}
+        </h2>
+      </div>
+      <div className="pr-4">
         <button
           onClick={handleClick}
-          className='bg-red-600 h-fit p-2 rounded-2xl text-white hover:bg-red-700 duration-300 lg:mr-[90px] mr-[15px] transition transform active:scale-95'>
+          className="bg-red-500 text-sm lg:text-base text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300 active:scale-95">
           Remove
         </button>
       </div>
     </div>
+
   )
 }
 

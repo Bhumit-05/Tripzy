@@ -43,6 +43,7 @@ const transactionSchema = new Schema({
     tripId : ObjectId,
     amountInUSD : Number,
     description : String,
+    personal : Boolean,
     date : { type: Date, default: Date.now }
 })
 

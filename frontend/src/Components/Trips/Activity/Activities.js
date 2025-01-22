@@ -58,7 +58,7 @@ const Activities = (tripId) => {
   return (
     <div>
       <h1 className='border-b-2 border-gray-500 text-3xl mb-20 mx-auto max-w-fit'>Activities</h1>
-      <div className='border-gray-500 border-2 w-80 h-56 rounded-2xl mb-20 mx-auto'>
+      <div className='border border-gray-300 shadow-md w-80 h-56 rounded-2xl mb-20 mx-auto '>
         <form 
           onSubmit={(e) => e.preventDefault()}
           className="mx-auto max-w-fit flex flex-col text-lg justify-between h-full py-4">

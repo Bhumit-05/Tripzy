@@ -11,8 +11,9 @@ transactionRouter.post("/", userMiddleware, async function(req, res){
     const amountInUSD = req.body.amountInUSD;
     const description = req.body.description;
     const date = req.body.date;
+    const personal = req.body.personal;
 
-    if(!amountInUSD){
+    if(amountInUSD === undefined || amountInUSD === null || amountInUSD === 0){
         res.json({
             message : "Enter an amount"
         })
@@ -38,6 +39,7 @@ transactionRouter.post("/", userMiddleware, async function(req, res){
         tripId : tripId,
         amountInUSD : amountInUSD,
         description : description,
+        personal : personal,
         date : date
     })
 
@@ -46,11 +48,13 @@ transactionRouter.post("/", userMiddleware, async function(req, res){
     })
 })
 
-transactionRouter.get("/user", userMiddleware, async function(req, res){
-    const userId = req.body.userId;
+transactionRouter.get("/user/:userId/:tripId", userMiddleware, async function(req, res){
+    const userId = req.params.userId;
+    const tripId = req.params.tripId;
 
     const userTransactions = await TransactionModel.find({
-        userId : userId
+        userId : userId,
+        tripId : tripId
     })
 
     res.json({
@@ -58,11 +62,12 @@ transactionRouter.get("/user", userMiddleware, async function(req, res){
     })
 })
 
-transactionRouter.get("/trip", userMiddleware, async function(req, res){
-    const tripId = req.body.tripId;
+transactionRouter.get("/trip/:tripId", userMiddleware, async function(req, res){
+    const tripId = req.params.tripId;
 
     const tripTransactions = await TransactionModel.find({
-        tripId : tripId
+        tripId : tripId,
+        personal : false
     })
 
     res.json({
@@ -70,18 +75,13 @@ transactionRouter.get("/trip", userMiddleware, async function(req, res){
     })
 })
 
-transactionRouter.put("/", userMiddleware, async function(req, res){
-    const transactionId = req.body.transactionId;
-    const userId = req.body.userId;
-    const tripId = req.body.tripId;
-    const amount = req.body.amount;
-    const description = req.body.description;
+transactionRouter.delete("/:transactionId", userMiddleware, async function(req, res){
+    const transactionId = req.params.transactionId;
 
-    await TransactionModel.findByIdAndUpdate(transactionId, {
-        userId : userId,
-        tripId : tripId,
-        amount : amount,
-        description : description,
+    await TransactionModel.findByIdAndDelete(transactionId);
+
+    res.json({
+        message : "Transaction deleted successfully!"
     })
 })
 

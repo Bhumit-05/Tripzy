@@ -46,11 +46,17 @@ const ActivityCard = (Activity) => {
     }, [])
 
     return (
-        <div className='w-[450px] h-20 border border-black text-xl flex items-center px-4 justify-between mb-10 rounded-lg hover:scale-105 hover:shadow-xl duration-300'>
-            <p className='ml-4 font-normal'>{Activity?.activity}</p>
-            <div className='mr-4'>{formattedDate}</div>
-            <div className='mr-6'>
-                {edit ? <Checkbox checked={isChecked} onChange={handleCheckboxChange} /> : <RemoveActivity activityId={activityId} tripId={tripId}/>}
+        <div className="w-80 h-20 bg-white text-black rounded-lg border border-gray-300 shadow-md flex justify-between items-center px-6 py-4 hover:shadow-xl hover:border-gray-400 transition-all duration-300 mb-6">
+            <div className="flex flex-col justify-center">
+                <p className="text-xl font-light">{Activity?.activity}</p>
+                <span className="text-sm text-gray-500 mt-1">{formattedDate}</span>
+            </div>
+            <div className="flex items-center space-x-4">
+                {edit ? (
+                <Checkbox checked={isChecked} onChange={handleCheckboxChange} />
+                ) : (
+                <RemoveActivity activityId={activityId} tripId={tripId} />
+                )}
             </div>
         </div>
     )
