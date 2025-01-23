@@ -6,7 +6,7 @@ const userSlice = createSlice({
         user : null,
         refresh : 0,
         editActivityButton : true,
-        editTransactionsButton : true,
+        editTransactionsButton : false,
         showTripTransactions : false,
         showUserTransactions : false,
     },

@@ -31,8 +31,6 @@ const TripTransactionsCard = ({transaction, userCurrency, tripCurrency}) => {
                 "token" : localStorage.getItem("token")
             }
         })
-
-        const json = await res.json();
         getTripTransction();
         getUserTransaction();
     }

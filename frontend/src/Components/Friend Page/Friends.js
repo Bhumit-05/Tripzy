@@ -40,7 +40,7 @@ const Friends = () => {
         <h1 className="text-center text-2xl lg:text-3xl font-extralight text-gray-700 my-6">
           Add Friend
         </h1>
-        <div className="w-full mx-auto mb-4 flex flex-col sm:flex-row items-center gap-4">
+        <form onSubmit={(e) => e.preventDefault()} className="w-full mx-auto mb-4 flex flex-col sm:flex-row items-center gap-4">
           <Input 
             ref={username}
             className="w-full sm:w-auto h-[50px] px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none"
@@ -51,7 +51,7 @@ const Friends = () => {
             className="w-[80px] h-[50px] bg-blue-500 text-white text-lg rounded-lg shadow-md hover:bg-blue-600 transition-transform duration-300 transform active:scale-95">
             Add
           </button>
-        </div>
+        </form>
 
         <div className="mt-6 text-center">
           <h1 className={`text-lg font-normal ${addMessage ? 'text-red-500' : 'text-gray-500'}`}>

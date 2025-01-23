@@ -38,7 +38,7 @@ const AddTransaction = ({userCurrency, tripCurrency}) => {
     friends.push(JSON.parse(localStorage.getItem("user")))
     let transactorObj = friends.find(friend => friend.username === transactor);
 
-    const tripAmountInUSD = parseFloat((tripAmount / tripCurrency.rateToUSD).toFixed(2));
+    const tripAmountInUSD = parseFloat((tripAmount / tripCurrency.rateToUSD));
 
     if(personal===true){
       transactorObj = JSON.parse(localStorage.getItem("user"));

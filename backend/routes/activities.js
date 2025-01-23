@@ -45,24 +45,6 @@ activityRouter.delete("/", userMiddleware, async function(req, res){
     })
 })
 
-activityRouter.put("/", userMiddleware, async function(req, res){
-    const activityId = req.body.activityId;
-    const activity = req.body.activity;
-    req.body.date = new Date(req.body.date);
-    const date = req.body.date;
-    const tripId = req.body.tripId;
-
-    await ActivityModel.findByIdAndUpdate(activityId, {
-        tripId : tripId,
-        activity : activity,
-        date : date
-    })
-
-    res.json({
-        message : "Activity updated"
-    })
-})
-
 activityRouter.get("/getState/:activityId", userMiddleware, async function(req, res){
     const activityId = req.params.activityId;
     

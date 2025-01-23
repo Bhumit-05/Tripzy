@@ -6,7 +6,8 @@ const tripsSlice = createSlice({
         tripsList : [],
         activities : [],
         travellerUsernames : [],
-        tripId : null
+        tripId : null,
+        tripTransactionDate : "All"
     },
     reducers : {
         setTrips : (state, action) => {
@@ -26,9 +27,12 @@ const tripsSlice = createSlice({
         },
         setTripId : (state, action) => {
             state.tripId = action.payload;
+        },
+        setTripTransactionDate : (state, action) => {
+            state.tripTransactionDate = action.payload;
         }
     }
 })
 
-export const { setTrips, removeTrip, addSingleTrip, addActivity, addTravellerUsernames, setTripId } = tripsSlice.actions;
+export const { setTrips, removeTrip, addSingleTrip, addActivity, addTravellerUsernames, setTripId, setTripTransactionDate } = tripsSlice.actions;
 export default tripsSlice.reducer;
