@@ -72,7 +72,7 @@ const TripPage = () => {
             <Header/>
             <h1 className='mx-auto max-w-fit lg:text-4xl text-3xl my-20'>{trip?.name}</h1>
 
-            <div className='mx-auto max-w-fit'>
+            <div className='sm:ml-[35%] ml-7'>
                 <TripDetails trip={trip}/>
                 <div className='flex flex-row mb-5'>
                     <h2 className='font-normal mr-5 text-xl'>Travellers : </h2>
@@ -84,16 +84,16 @@ const TripPage = () => {
                 </div>
             </div>
 
-            <div className='grid lg:grid-cols-2 mt-10'>
-                <div className='lg:border-r-2 border-b-2 border-gray-500'>
+            <div className='grid lg:grid-cols-2 sm:mt-28 mt-20'>
+                <div className='border-b-2 sm:border-b-0 sm:border-r-2 border-gray-500'>
                     <h2 className='mx-auto max-w-fit'><Activities tripId = {tripId}/></h2>
                 </div>
-                <div className='border-b-2 border-gray-500'>
+                <div className=' border-gray-500 sm:pb-10'>
                     <h2 className='mx-auto max-w-fit'><Transactions currency={trip.currencyCode}/></h2>
                 </div>
             </div>
 
-            <div className='mx-auto max-w-fit'>
+            <div className='mx-auto max-w-fit mt-10'>
                 <LeaveTripButton tripId = {tripId} NoOfTravellers={travellerUsernames.length}/>
             </div>
         </div>

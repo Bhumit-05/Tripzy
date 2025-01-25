@@ -58,7 +58,7 @@ const LeaveTripButton = ({ tripId, NoOfTravellers }) => {
       <div className="mx-auto max-w-fit">
         <button
           onClick={() => setShowModal(true)}
-          className="bg-red-200 hover:bg-red-100 p-2 rounded-xl duration-300 transition transform active:scale-90">
+          className="bg-red-500 hover:bg-red-600 p-2 rounded-xl duration-300 transition transform active:scale-90 text-white">
           Leave Trip
         </button>
       </div>

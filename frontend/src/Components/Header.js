@@ -33,7 +33,7 @@ const Header = () => {
 
   return (
     <div className=' h-[100px] shadow-md border-gray-300 border-b-2 flex justify-between items-center relative'>
-        <Link to={"/"}><img src={LOGO} alt='logo' className='w-3/5 mt-[15px] ml-[50px]'/></Link>
+        <Link to={"/"}><img src={LOGO} alt='logo' className='hidden sm:block w-3/5 mt-[15px] ml-[50px]'/></Link>
         <div className='my-auto max-h-fit flex flex-row font-normal'>
           <Link className='border-black border-2 rounded-3xl w-[100px] h-[50px] flex items-center justify-center md:mr-20 sm:mr-5 hover:bg-slate-200 duration-300 mx-auto' to={"/"}>
             Home

@@ -14,6 +14,12 @@ const AddTraveller = ({trip}) => {
         setSelectedFriend(event.target.value);
     };
 
+    const reset = () => {
+        setTimeout(() => {
+            setAddMessage("");
+        }, 3000)
+    }
+
     const handleAddClick = async () => {
 
         const friends = JSON.parse(localStorage.getItem("friends"));
@@ -60,7 +66,7 @@ const AddTraveller = ({trip}) => {
                     ))}
                 </select>
 
-                <button className='bg-blue-500 duration-300 px-5 hover:bg-blue-600 text-white p-2 rounded-lg transition transform active:scale-90' onClick={handleAddClick}>Add</button>
+                <button className='bg-blue-500 duration-300 px-5 hover:bg-blue-600 text-white p-2 rounded-lg transition transform active:scale-90' onClick={() => {handleAddClick(); reset();}}>Add</button>
            </div>
             <div>
                 <p className="hidden md:block lg:block ml-10 text-blue-500">{addMessage}</p>

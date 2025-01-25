@@ -36,14 +36,14 @@ const UserTransactionCard = ({transaction, userCurrency, tripCurrency}) => {
 
   return (
     <div className="bg-white border border-gray-300 rounded-lg shadow-md p-2 w-40 mt-2 hover:scale-105 duration-300">
-      <div className='flex flex-row justify-between'>
-        <h1 className='text-md font-normal'>{description}</h1>
-        <div className='text-md'>{formattedDate}</div>
+      <div className='flex flex-row justify-between text-sm mb-1'>
+        <h1 className='text-base font-normal my-auto'>{description}</h1>
+        <div className='text-sm my-auto'>{formattedDate}</div>
       </div>
       <div className='flex flex-row'>
         <div className='mx-auto max-w-fit'>
-            <div><span className='font-light text-sm'>{tripAmount}</span> {tripCurrency?.symbol}</div>
-            <div><span className='font-light text-sm'>{userAmount}</span> {userCurrency?.symbol}</div>
+            <div className='mx-auto max-w-fit'><span className='font-light text-sm'>{tripAmount}</span> {tripCurrency?.symbol}</div>
+            <div className='mx-auto max-w-fit'><span className='font-light text-sm'>{userAmount}</span> {userCurrency?.symbol}</div>
         </div>
         {edit && (
             <div className='my-auto'><CrossCheckbox checked={true} onChange={handleChange}/></div>

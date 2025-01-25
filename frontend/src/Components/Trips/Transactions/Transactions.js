@@ -36,7 +36,7 @@ const Transactions = (currencyCode) => {
 
   return (
     <div>
-      <h1 className='border-b-2 border-gray-500 text-3xl mb-20 mx-auto max-w-fit'>Transactions</h1>
+      <h1 className='border-b-2 mt-10 border-gray-500 text-3xl mb-20 mx-auto max-w-fit'>Transactions</h1>
 
       <AddTransaction userCurrency={userCurrency} tripCurrency={tripCurrency} />
 
@@ -45,7 +45,7 @@ const Transactions = (currencyCode) => {
       <UserTransactions userCurrency={userCurrency} tripCurrency={tripCurrency}/>
 
       {(showTripTransactions || showUserTransactions) &&
-      <div className="flex justify-center items-center h-full mt-8">
+      <div className="flex justify-center items-center h-full my-8">
         <button 
           onClick={handleEditClick}
           className="bg-blue-500 duration-300 h-10 w-20 hover:bg-blue-600 text-white p-2 rounded-lg transition transform active:scale-90">

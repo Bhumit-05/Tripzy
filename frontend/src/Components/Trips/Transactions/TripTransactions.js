@@ -46,16 +46,18 @@ const TripTransactions = ({userCurrency, tripCurrency}) => {
 
         {showTripTransactions && (
           <div className="mt-2 w-full border border-gray-500 rounded-lg bg-gray-100 p-2">
-            <TripFilter/>
-            {tripTransactions.length > 0 ? (
-              tripTransactions.map((transaction) => (
+            
+            {tripTransactions.length > 0 ? (<>
+              <TripFilter/>
+              {tripTransactions.map((transaction) => (
                 <TripTransactionsCard key={transaction._id} transaction={transaction} userCurrency={userCurrency} tripCurrency={tripCurrency}/>
-              ))
+              ))}
+          
+              <TripTotal userCurrency={userCurrency} tripCurrency={tripCurrency}/>
+              </>
             ) : (
               <p className="text-gray-600 text-center">No transactions available</p>
             )}
-
-            <TripTotal userCurrency={userCurrency} tripCurrency={tripCurrency}/>
           </div>
         )}
       </div>
