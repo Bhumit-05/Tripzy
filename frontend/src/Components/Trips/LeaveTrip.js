@@ -35,9 +35,8 @@ const LeaveTripButton = ({ tripId, NoOfTravellers }) => {
       })
     });
 
-    const json = await res.json();
-    Navigate("/");
     getTrips();
+    Navigate("/home");
 
     if(NoOfTravellers===1){
       deleteTrip();
@@ -55,7 +54,7 @@ const LeaveTripButton = ({ tripId, NoOfTravellers }) => {
 
   return (
     <div>
-      <div className="mx-auto max-w-fit">
+      <div className="mx-auto max-w-fit mb-20 mt-20">
         <button
           onClick={() => setShowModal(true)}
           className="bg-red-500 hover:bg-red-600 p-2 rounded-xl duration-300 transition transform active:scale-90 text-white">
@@ -70,7 +69,7 @@ const LeaveTripButton = ({ tripId, NoOfTravellers }) => {
             <div className="flex items-center justify-center space-x-4">
               <button
                 onClick={handleConfirmLeave}
-                className="bg-blue-500 text-white w-20 px-4 py-2 rounded-md hover:bg-blue-600 transition duration-200">
+                className="bg-blue-600 text-white w-20 px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
                 OK
               </button>
               <button

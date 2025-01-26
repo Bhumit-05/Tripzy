@@ -79,7 +79,7 @@ const UserTransactions = ({userCurrency, tripCurrency}) => {
                                 transaction.personal ? (<UserTransactionCard key={transaction._id} transaction={transaction} userCurrency={userCurrency} tripCurrency={tripCurrency}/>) : null
                             ))
                             ) : (
-                            <p className="text-gray-600 text-center">No transactions available</p>
+                            <p className="text-gray-600 text-center">Even your wallet's bored.</p>
                             )}
                         </div>
                         {personalTransactions.length>0 && <UserTotal userCurrency={userCurrency} tripCurrency={tripCurrency} personal={true} />}

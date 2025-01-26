@@ -164,7 +164,7 @@ const AddTransaction = ({userCurrency, tripCurrency}) => {
               handleAddClick();
               reset();
             }}
-            className="bg-blue-500 mr-4 duration-300 h-10 w-32 mx-auto hover:bg-blue-600 text-white p-2 rounded-lg transition transform active:scale-90">
+            className="bg-blue-600 mr-4 duration-300 h-10 w-32 mx-auto hover:bg-blue-700 text-white p-2 rounded-lg transition transform active:scale-90">
             Add to trip
           </button>
 
@@ -173,12 +173,12 @@ const AddTransaction = ({userCurrency, tripCurrency}) => {
               handlePersonalAddClick();
               reset();
             }}
-            className="bg-blue-500 duration-300 h-10 w-fit mx-auto hover:bg-blue-600 text-white p-2 rounded-lg transition transform active:scale-90">
+            className="bg-blue-600 duration-300 h-10 w-fit mx-auto hover:bg-blue-700 text-white p-2 rounded-lg transition transform active:scale-90">
             Add to personal
           </button>
         </div>
 
-        <p className='mx-auto max-w-fit text-blue-500'>{message}</p>
+        <p className='mx-auto max-w-fit text-blue-600'>{message}</p>
       </form>
     </div>
   )

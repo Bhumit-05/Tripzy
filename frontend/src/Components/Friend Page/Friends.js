@@ -32,7 +32,7 @@ const Friends = () => {
   return (
     <div className="font-thin">
       <Header />
-      <h1 className="max-w-fit mx-auto text-center text-3xl lg:text-5xl my-16 text-gray-800 tracking-wide">
+      <h1 className="max-w-fit mt-44 mx-auto text-center text-3xl lg:text-5xl my-16 text-gray-800 tracking-wide">
         Share the Adventure with Your Closest Companions!
       </h1>
 
@@ -48,13 +48,13 @@ const Friends = () => {
           />
           <button 
             onClick={handleClick}
-            className="w-[80px] h-[50px] bg-blue-500 text-white text-lg rounded-lg shadow-md hover:bg-blue-600 transition-transform duration-300 transform active:scale-95">
+            className="w-[80px] h-[50px] bg-blue-600 text-white text-lg rounded-lg shadow-md hover:bg-blue-700 transition-transform duration-300 transform active:scale-95">
             Add
           </button>
         </form>
 
         <div className="mt-6 text-center">
-          <h1 className={`text-lg font-normal ${addMessage ? 'text-red-500' : 'text-gray-500'}`}>
+          <h1 className={`text-lg font-normal ${addMessage ? 'text-blue-600' : 'text-gray-500'}`}>
             {addMessage || "Enter a username to add a friend."}
           </h1>
         </div>
@@ -63,7 +63,7 @@ const Friends = () => {
       <h1 className="mx-auto text-center text-4xl text-gray-800 mt-24 mb-12 tracking-wide border-b-2 border-gray-300 pb-2">
         Friend List
       </h1>
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="max-w-4xl mx-auto px-4 py-10">
         <FriendList />
       </div>
     </div>

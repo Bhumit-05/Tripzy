@@ -12,7 +12,7 @@ const FriendList = () => {
         <div>
             {friendList.length !== 0 ? 
             friendList.map(friend => <FriendCard key = {friend._id} friend={friend}/>)
-             : null}
+            : <p className='text-center mb-20 pt-10 text-2xl'>Empty friend list: Your social circle is in stealth mode.</p>}
         </div>
     )
 }

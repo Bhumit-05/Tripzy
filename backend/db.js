@@ -11,8 +11,7 @@ const userSchema = new Schema({
     username : {type : String, required : true, unique: true},
     fullName : {type : String, required : true},
     password : {type : String, required : true},
-    currencyCode : {type : String, default : "INR"},
-    conversionRateToUSD : {type : Number, default : 86.5471}
+    currencyCode : {type : String, default : "INR"}
 })
 
 const tripSchema = new Schema({
@@ -28,7 +27,6 @@ const tripSchema = new Schema({
         default: "not_started",
     },
     currencyCode : {type : String, default : "INR"},
-    conversionRateToUSD : {type : Number, default : 86.5471}
 })
 
 const activitySchema = new Schema({

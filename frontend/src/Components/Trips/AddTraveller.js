@@ -57,7 +57,7 @@ const AddTraveller = ({trip}) => {
            <div>
                 <label htmlFor="friend-select" className='font-normal text-xl mr-9'>Add a traveller:</label>
 
-                <select id="friend-select" className='mx-4 mb-5 w-44 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"' value={selectedFriend} onChange={handleFriendChange}>
+                <select id="friend-select" className='mx-4 mb-5 w-44 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-600"' value={selectedFriend} onChange={handleFriendChange}>
                     <option value="">  Choose a friend </option>
                     {friends.map((friend) => (
                         <option key={friend._id} value={friend.username}>
@@ -66,10 +66,10 @@ const AddTraveller = ({trip}) => {
                     ))}
                 </select>
 
-                <button className='bg-blue-500 duration-300 px-5 hover:bg-blue-600 text-white p-2 rounded-lg transition transform active:scale-90' onClick={() => {handleAddClick(); reset();}}>Add</button>
+                <button className='bg-blue-600 duration-300 px-5 hover:bg-blue-700 text-white p-2 rounded-lg transition transform active:scale-90' onClick={() => {handleAddClick(); reset();}}>Add</button>
            </div>
             <div>
-                <p className="hidden md:block lg:block ml-10 text-blue-500">{addMessage}</p>
+                <p className="hidden md:block lg:block ml-10 text-blue-600">{addMessage}</p>
             </div>
         </div>
     );

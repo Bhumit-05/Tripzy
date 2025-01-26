@@ -1,17 +1,23 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
-function userMiddleware(req, res, next){
+function userMiddleware(req, res, next) {
     const token = req.headers.token;
 
-    const decodedData = jwt.verify(token, process.env.USER_JWT_SECRET);
-    if(decodedData){
-        req.userId = decodedData.id;
-        next();
+    if (!token) {
+        return res.status(401).json({ message: "Token missing. Please log in." });
     }
-    else{
-        res.json({
-            message : "You are not signed in."
-        })
+
+    try {
+        const decodedData = jwt.verify(token, process.env.USER_JWT_SECRET);
+
+        if (decodedData) {
+            req.userId = decodedData.id;
+            next();
+        } else {
+            res.status(401).json({ message: "Invalid token. Please log in again." });
+        }
+    } catch (err) {
+        res.status(401).json({ message: "Invalid token. Please log in again." });
     }
 }
 

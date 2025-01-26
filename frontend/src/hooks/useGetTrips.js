@@ -1,10 +1,9 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setTrips } from '../utils/tripsSlice';
+import { useEffect } from 'react';
 
 const useGetTrips = () => {
     const dispatch = useDispatch();
-    const tripsList = useSelector(state => state.trips.tripsList);
 
     const getTrips = async () => {
         const res = await fetch("http://localhost:4000/trips", {
@@ -18,6 +17,10 @@ const useGetTrips = () => {
         const json = await res.json();
         dispatch(setTrips(json));
     }
+
+    useEffect(() => {
+        getTrips();
+    }, [])
 
   return getTrips;
 }

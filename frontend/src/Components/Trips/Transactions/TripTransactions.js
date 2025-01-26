@@ -56,7 +56,7 @@ const TripTransactions = ({userCurrency, tripCurrency}) => {
               <TripTotal userCurrency={userCurrency} tripCurrency={tripCurrency}/>
               </>
             ) : (
-              <p className="text-gray-600 text-center">No transactions available</p>
+              <p className="text-gray-600 text-center">Looks like your wallet's been on vacation—no transactions here!</p>
             )}
           </div>
         )}

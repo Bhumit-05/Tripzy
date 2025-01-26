@@ -53,7 +53,7 @@ const RemoveTraveller = ({travellerUsernames, tripId}) => {
         <div className='flex flex-row'>
             <label htmlFor="traveller-select" className='font-normal text-xl'>Remove a traveller:</label>
 
-            <select id="traveller-select" className='mx-4 w-44 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"' value={selectedTraveller} onChange={handleTravellerChange}>
+            <select id="traveller-select" className='mx-4 w-44 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-600"' value={selectedTraveller} onChange={handleTravellerChange}>
                 <option value="">  Choose a traveller </option>
                 {travellerUsernames.map((traveller) => (
                     <option key={traveller}>

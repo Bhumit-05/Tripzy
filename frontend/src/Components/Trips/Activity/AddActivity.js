@@ -61,12 +61,12 @@ const AddActivity = () => {
             handleClick();
             reset();
             }}
-            className="bg-blue-500 duration-300 h-10 w-20 mx-auto hover:bg-blue-600 text-white p-2 rounded-lg transition transform active:scale-90">
+            className="bg-blue-600 duration-300 h-10 w-20 mx-auto hover:bg-blue-700 text-white p-2 rounded-lg transition transform active:scale-90">
             Add
         </button>
 
         <p
-            className='mx-auto max-w-fit text-blue-500'>
+            className='mx-auto max-w-fit text-blue-600'>
             {message}
         </p>
         </form>

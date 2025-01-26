@@ -33,7 +33,7 @@ const TripTotal = ({userCurrency, tripCurrency}) => {
       <div className="text-gray-800 text-lg font-normal">
         Total spent
       </div>
-      <div className="text-blue-600 text-lg font-light">
+      <div className="text-blue-700 text-lg font-light">
         {tripAmount} {tripCurrency?.symbol}
       </div>
       {isDifferentCurrency && (

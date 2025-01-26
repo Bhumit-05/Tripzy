@@ -9,7 +9,8 @@ const userSlice = createSlice({
         editTransactionsButton : false,
         showTripTransactions : false,
         showUserTransactions : false,
-        showActivities : false
+        showActivities : false,
+        dp_url : null
     },
     reducers : {
         addUser : (state, action) => {
@@ -35,9 +36,12 @@ const userSlice = createSlice({
         },
         toggleShowActivities : (state) => {
             state.showActivities = !state.showActivities;
+        },
+        setDpURL : (state, action) => {
+            state.dp_url = action.payload;
         }
     }
 })
 
-export const {addUser, removeUser, triggerRefresh, toggleEditActivityButton, toggleEditTransactionButton, toggleShowUserTransac, toggleShowTripTransac, toggleShowActivities} = userSlice.actions;
+export const {addUser, removeUser, triggerRefresh, toggleEditActivityButton, toggleEditTransactionButton, toggleShowUserTransac, toggleShowTripTransac, toggleShowActivities, setDpURL} = userSlice.actions;
 export default userSlice.reducer;

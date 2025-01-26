@@ -8,18 +8,22 @@ import useGetFriends from '../../hooks/useGetFriends';
 const Home = () => {
 
   const tripsList = useSelector(state => state.trips.tripsList);
+  const friends = useSelector(state => state.friends.friendList);
+  const sortedTripList = [...tripsList].sort((a, b) =>
+    new Date(b.createdAt) - new Date(a.createdAt)
+  );
   const getFriends = useGetFriends();
   const getTrips = useGetTrips();
   
   useEffect(() => {
-    getFriends();
-  }, [])
+    if((friends.length===0)){
+      getFriends();
+    }
+  }, [friends.length])
 
   useEffect(() => {
-    if(tripsList.length===0){
-      getTrips();
-    }
-  }, [tripsList.length])
+    getTrips();
+  }, [])
 
   return (
     <div className='font-thin'>
@@ -33,9 +37,10 @@ const Home = () => {
       </div>
       
       <div className='mt-12'>
-        <h1 className='text-5xl text-black text-center mb-20'>MY TRIPS</h1>
-        <div className='grid grid-cols-1'>
-          {tripsList.map(trip => <TripCard key={trip._id} trip={trip}/>)}
+        <h1 className='text-5xl text-black text-center'>MY TRIPS</h1>
+        <div className='border-b-2 border-gray-300'></div>
+        <div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 bg-gray-100/70 py-20'>
+          {sortedTripList.map(trip => <TripCard key={trip._id} trip={trip}/>)}
         </div>
       </div>
     </div>

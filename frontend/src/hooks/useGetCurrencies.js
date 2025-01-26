@@ -14,7 +14,12 @@ const useGetCurrencies = () => {
             }
         });
         const json = await res.json();
-        dispatch(addCurrencies(json));
+        if (Array.isArray(json)) {
+            json.sort((a, b) => a.currencyCode.localeCompare(b.currencyCode));
+            dispatch(addCurrencies(json));
+        } else {
+            console.error("Response is not an array:", json);
+        }
     }
 
     return getCurrencies;

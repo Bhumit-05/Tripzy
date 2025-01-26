@@ -8,13 +8,19 @@ import CreateTrips from './Components/Create Trips';
 import Friends from './Components/Friend Page/Friends';
 import TripPage from './Components/Trips/TripPage';
 import Profile from './Components/Profile';
+import LandingPage from './Components/LandingPage';
 
 
 function App() {
 
   const appRouter = createBrowserRouter([
     {
-      path : "/",
+      path: "/",
+      element: <LandingPage />,
+      errorElement: <Error />,
+    },
+    {
+      path : "/home",
       element : (
         <PrivateRoute>
           <Home/>

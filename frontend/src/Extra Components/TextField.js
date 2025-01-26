@@ -1,13 +1,12 @@
 import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 
-// Use forwardRef to forward the ref to the input element
 const Input = forwardRef(({ width, height }, ref) => {
   return (
     <StyledWrapper width={width} height={height}>
       <div className="form-control">
         <input
-          ref={ref} // Forward the ref to the input element
+          ref={ref}
           className="input input-alt"
           placeholder="Enter Friend's username"
           required

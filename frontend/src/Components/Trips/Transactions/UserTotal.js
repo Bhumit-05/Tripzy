@@ -6,6 +6,7 @@ const UserTotal = ({userCurrency, tripCurrency, personal}) => {
     const userTransactions = useSelector(state => state.transactions.userTransactions);
     let total = 0;
     const filterDate = useSelector(state => state.trips.userTransactionDate);
+    const isDifferentCurrency = tripCurrency.rateToUSD !== userCurrency.rateToUSD;
 
     const formatTheDate = (date) => {
       const dateToFormat = new Date(date);
@@ -27,8 +28,10 @@ const UserTotal = ({userCurrency, tripCurrency, personal}) => {
     <div className='bg-white border border-gray-300 rounded-lg shadow-md p-2 w-40 mt-6 '>
         <div className='mx-auto max-w-fit'>
             <h1 className='mx-auto max-w-fit font-medium text-base'>Total</h1>
-            <div className='mx-auto max-w-fit text-blue-600 font-light'>{tripTotal} {tripCurrency?.symbol}</div>
-            <div className='mx-auto max-w-fit text-green-600 font-light'>{userTotal} {userCurrency?.symbol}</div>
+            <div className='mx-auto max-w-fit text-blue-700 font-light'>{tripTotal} {tripCurrency?.symbol}</div>
+            {isDifferentCurrency && (
+              <div className='mx-auto max-w-fit text-green-600 font-light'>{userTotal} {userCurrency?.symbol}</div>
+            )}
         </div>
     </div>
   )

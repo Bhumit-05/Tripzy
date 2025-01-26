@@ -55,12 +55,12 @@ const Activities = (tripId) => {
       {showActivities && (
         <>
         <div className='mt-2 w-96 border border-gray-500 rounded-lg bg-gray-100 p-2'>
-          {activities.length>0 && <> 
+          {activities.length>0 ? <> 
             <ActivityFilter/> 
             <div className='mx-auto max-w-fit'>
               {sortedActivities.map(activity => <ActivityCard key={activity._id} Activity={activity}/>)}
             </div>
-          </>}
+          </> : <p className='mx-auto max-w-fit py-2 text-lg'>Where did all the fun go?</p>}
 
         </div>
 
@@ -68,7 +68,7 @@ const Activities = (tripId) => {
           <div className="flex justify-center ">
             <button 
               onClick={handleEditClick}
-              className="bg-blue-500 duration-300 my-8 h-10 w-20 hover:bg-blue-600 text-white p-2 rounded-lg transition transform active:scale-90">
+              className="bg-blue-600 duration-300 my-8 h-10 w-20 hover:bg-blue-700 text-white p-2 rounded-lg transition transform active:scale-90">
               {edit? "Edit" : "Done"}
             </button>
           </div>}

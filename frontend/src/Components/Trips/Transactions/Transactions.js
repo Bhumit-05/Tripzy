@@ -48,7 +48,7 @@ const Transactions = (currencyCode) => {
       <div className="flex justify-center items-center h-full my-8">
         <button 
           onClick={handleEditClick}
-          className="bg-blue-500 duration-300 h-10 w-20 hover:bg-blue-600 text-white p-2 rounded-lg transition transform active:scale-90">
+          className="bg-blue-600 duration-300 h-10 w-20 hover:bg-blue-700 text-white p-2 rounded-lg transition transform active:scale-90">
           {!edit ? "Edit" : "Done"}
         </button>
       </div>}

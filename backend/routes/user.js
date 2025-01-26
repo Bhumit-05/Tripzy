@@ -122,4 +122,19 @@ userRouter.get("/getUser", userMiddleware, async function(req, res) {
     res.json(user);
 })
 
+userRouter.put("/:userId", userMiddleware, async function(req, res){
+    const userId = req.params.userId;
+    const { fullName, dp_url, currencyCode } = req.body;
+
+    await UserModel.findByIdAndUpdate(userId, {
+        fullName : fullName,
+        dp_url : dp_url,
+        currencyCode : currencyCode
+    })
+
+    const user = await UserModel.findById(userId);
+
+    res.json(user);
+})
+
 module.exports = userRouter;
