@@ -1,4 +1,4 @@
-export const LOGIN_BG = "https://images.pexels.com/photos/6534193/pexels-photo-6534193.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+export const LANDING_BG = "https://images.unsplash.com/photo-1736230990003-a98eea26ea1f?q=80&w=2831&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 export const WELCOME = "https://i.imgur.com/a6Z1rmg.gif";
 

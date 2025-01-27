@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { LOGO } from '../utils/constants';
+import { LANDING_BG, LOGO } from '../utils/constants';
 
 const LandingPage = () => {
   const Navigate = useNavigate();
@@ -21,9 +21,9 @@ const LandingPage = () => {
       <div
         className="absolute inset-0 bg-cover bg-center -z-10"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1736230990003-a98eea26ea1f?q=80&w=2831&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
-        }}
-      ></div>
+          backgroundImage: `url(${LANDING_BG})`,
+        }}>
+      </div>
       
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
@@ -36,8 +36,7 @@ const LandingPage = () => {
 
         <button
           onClick={handleGetStarted}
-          className="px-6 py-3 bg-blue-700 text-white text-xl font-extralight rounded-full hover:bg-blue-800 transition duration-300"
-        >
+          className="px-6 py-3 bg-blue-700 text-white text-xl font-extralight rounded-full hover:bg-blue-800 transition duration-300">
           Get Started
         </button>
       </div>

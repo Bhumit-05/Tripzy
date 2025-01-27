@@ -88,7 +88,7 @@ const CreateTrips = () => {
                             <input ref={endDate} className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full focus:border-blue-600 focus:ring-2 focus:ring-blue-600" type="date" />
                         </div>
                     </div>
-                    <h1 className='text-red-600'>{message}</h1>
+                    <h1 className='text-blue-600'>{message}</h1>
                     <div className="mt-5">
                         <button
                             onClick={handleClick} 

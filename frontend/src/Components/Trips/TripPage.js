@@ -70,7 +70,7 @@ const TripPage = () => {
     return (
         <div className='font-thin'>
             <Header/>
-            <h1 className='mx-auto max-w-fit lg:text-4xl text-3xl my-20'>{trip?.name}</h1>
+            <h1 className='mx-auto max-w-fit lg:text-4xl text-3xl my-20 mt-40'>{trip?.name}</h1>
 
             <div className='sm:ml-[35%] ml-7'>
                 <TripDetails trip={trip}/>
