@@ -7,7 +7,7 @@ const useGetSingleTrip = (tripId) => {
     const refresh = useSelector(state => state.user.refresh);
 
     const getTrip = async () => {
-        const res = await fetch(`http://localhost:4000/trips/oneTrip/${tripId}`, {
+        const res = await fetch(`https://tripzy-1.onrender.com/trips/oneTrip/${tripId}`, {
             method : "GET",
             headers : {
                 "content-type" : "application/json",

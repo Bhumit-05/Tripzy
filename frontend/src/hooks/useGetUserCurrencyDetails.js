@@ -7,7 +7,7 @@ const useGetUserCurrencyDetails = (currency) => {
     const dispatch = useDispatch();
 
     const getUserCurrencyDetails = async () => {
-        const res = await fetch(`http://localhost:4000/currency/currencyDetails/${currency}`, {
+        const res = await fetch(`https://tripzy-1.onrender.com/currency/currencyDetails/${currency}`, {
             method : "GET",
             headers : {
                 "token" : localStorage.getItem("token")

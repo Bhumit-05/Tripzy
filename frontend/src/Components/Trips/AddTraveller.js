@@ -35,7 +35,7 @@ const AddTraveller = ({trip}) => {
             return;
         }        
 
-        const res = await fetch("http://localhost:4000/trips/addTraveller",{
+        const res = await fetch("https://tripzy-1.onrender.com/trips/addTraveller",{
             method : "POST",
             headers : {
                 "content-type" : "application/json",

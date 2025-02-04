@@ -7,7 +7,7 @@ const useGetActivities = (tripId) => {
     const dispatch = useDispatch();
 
     const getActivities = async () => {
-        const res = await fetch(`http://localhost:4000/activity/${tripId}`, {
+        const res = await fetch(`https://tripzy-1.onrender.com/activity/${tripId}`, {
             headers : {
                 "token" : localStorage.getItem("token")
             }

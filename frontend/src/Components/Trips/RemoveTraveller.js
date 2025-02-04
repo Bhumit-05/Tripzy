@@ -32,7 +32,7 @@ const RemoveTraveller = ({travellerUsernames, tripId}) => {
             return;
         }
 
-        const res = await fetch("http://localhost:4000/trips/removeTraveller", {
+        const res = await fetch("https://tripzy-1.onrender.com/trips/removeTraveller", {
             method : "DELETE",
             headers : {
                 "content-type" : "application/json",

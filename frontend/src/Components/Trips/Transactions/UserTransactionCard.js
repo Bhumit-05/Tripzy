@@ -24,7 +24,7 @@ const UserTransactionCard = ({transaction, userCurrency, tripCurrency}) => {
     });
 
     const handleChange = async () => {
-        const res = await fetch(`http://localhost:4000/transaction/${transaction?._id}`, {
+        const res = await fetch(`https://tripzy-1.onrender.com/transaction/${transaction?._id}`, {
             method : "DELETE",
             headers : {
                 "token" : localStorage.getItem("token")

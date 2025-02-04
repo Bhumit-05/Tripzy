@@ -29,7 +29,7 @@ const TripPage = () => {
     }, [])
 
     const getUsernames = async (travellerId) => {
-        const res = await fetch(`http://localhost:4000/user/getUsername/${travellerId}`)
+        const res = await fetch(`https://tripzy-1.onrender.com/user/getUsername/${travellerId}`)
         const json = await res.json();
         return json;
     }

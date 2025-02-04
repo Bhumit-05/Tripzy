@@ -41,7 +41,7 @@ const Profile = () => {
 
         // This is done because if the field is changed without updating db then the data should be restored back to its original value after the editing mode is switched
         if(isEditable){
-            const res = await fetch("http://localhost:4000/user/getUser", {
+            const res = await fetch("https://tripzy-1.onrender.com/user/getUser", {
                 method : "GET",
                 headers : {
                     "token" : localStorage.getItem("token")
@@ -59,7 +59,7 @@ const Profile = () => {
     }
 
     const handleUpdateClick = async () => {
-        const res = await fetch(`http://localhost:4000/user/${user?._id}`, {
+        const res = await fetch(`https://tripzy-1.onrender.com/user/${user?._id}`, {
             method : "PUT",
             headers : {
                 "token" : localStorage.getItem("token"),

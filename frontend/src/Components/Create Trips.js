@@ -28,7 +28,7 @@ const CreateTrips = () => {
         endDate = endDate?.current?.value || null;
         currency = currency?.current?.value || null;
 
-        const res = await fetch("http://localhost:4000/trips", {
+        const res = await fetch("https://tripzy-1.onrender.com/trips", {
             method : "POST",
             headers : {
                 "content-type" : "application/json",

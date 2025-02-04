@@ -11,7 +11,7 @@ const FriendCard = (friend) => {
 
     const friendName = friend.friend.username;
 
-    const res = await fetch("http://localhost:4000/friends",{
+    const res = await fetch("https://tripzy-1.onrender.com/friends",{
       method : "DELETE",
       headers : {
         "token" : localStorage.getItem("token"),

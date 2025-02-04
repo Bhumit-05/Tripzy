@@ -8,7 +8,7 @@ const useGetUserTransac = (userId) => {
     const dispatch = useDispatch();
 
     const getUserTransaction = async () => {
-        const res = await fetch(`http://localhost:4000/transaction/user/${userId}/${tripId}`, {
+        const res = await fetch(`https://tripzy-1.onrender.com/transaction/user/${userId}/${tripId}`, {
             method : "GET",
             headers : {
                 "content-type" : "application/json",

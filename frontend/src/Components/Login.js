@@ -30,7 +30,7 @@ const Login = () => {
 
     try {
       if (signIn) {
-        const res = await fetch("http://localhost:4000/user/signin", {
+        const res = await fetch("https://tripzy-1.onrender.com/user/signin", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -51,7 +51,7 @@ const Login = () => {
           Navigate("/home");
         }
       } else {
-        const res = await fetch("http://localhost:4000/user/signup", {
+        const res = await fetch("https://tripzy-1.onrender.com/user/signup", {
           method: "POST",
           headers: {
             "content-type": "application/json",

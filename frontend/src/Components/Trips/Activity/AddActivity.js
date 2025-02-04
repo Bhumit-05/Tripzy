@@ -23,7 +23,7 @@ const AddActivity = () => {
           return;
         }
         
-        const res = await fetch("http://localhost:4000/activity", {
+        const res = await fetch("https://tripzy-1.onrender.com/activity", {
           method : "POST",
           headers : {
             "content-type" : "application/json",

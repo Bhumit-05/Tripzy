@@ -6,7 +6,7 @@ const useGetTrips = () => {
     const dispatch = useDispatch();
 
     const getTrips = async () => {
-        const res = await fetch("http://localhost:4000/trips", {
+        const res = await fetch("https://tripzy-1.onrender.com/trips", {
             method : "GET",
             headers : {
                 "token" : localStorage.getItem("token"),

@@ -15,7 +15,7 @@ const ActivityCard = (Activity) => {
     const formattedDate = date.toLocaleDateString("en-GB")
 
     const getState = async () => {
-        const res = await fetch(`http://localhost:4000/activity/getState/${activityId}`, {
+        const res = await fetch(`https://tripzy-1.onrender.com/activity/getState/${activityId}`, {
             method : "GET",
             headers : {
                 "content-type" : "application/json",
@@ -27,7 +27,7 @@ const ActivityCard = (Activity) => {
     }
 
     const handleCheckboxChange = async () => {
-        const res = await fetch(`http://localhost:4000/activity/setState/${activityId}`, {
+        const res = await fetch(`https://tripzy-1.onrender.com/activity/setState/${activityId}`, {
             method : "POST",
             headers : {
                 "token" : localStorage.getItem("token"),

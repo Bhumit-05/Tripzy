@@ -8,7 +8,7 @@ const useGetFriends = () => {
 
     const getList = async () => {
         const friends = localStorage.getItem("friends");
-        const res = await fetch("http://localhost:4000/friends", {
+        const res = await fetch("https://tripzy-1.onrender.com/friends", {
             method : "GET",
             headers : {
                 "token" : localStorage.getItem("token"),

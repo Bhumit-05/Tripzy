@@ -22,7 +22,7 @@ const Header = () => {
   }, [])
 
   const getUser = async () => {
-    const res = await fetch("http://localhost:4000/user/getUser", {
+    const res = await fetch("https://tripzy-1.onrender.com/user/getUser", {
       headers : {
         "token" : localStorage.getItem("token")
       }

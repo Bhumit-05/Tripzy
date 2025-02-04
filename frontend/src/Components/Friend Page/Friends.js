@@ -13,7 +13,7 @@ const Friends = () => {
   const handleClick = async () => {
     const enteredUsername = username.current.value || "";
 
-    const res = await fetch("http://localhost:4000/friends", {
+    const res = await fetch("https://tripzy-1.onrender.com/friends", {
       method : "POST",
       headers : {
         "content-type" : "application/json",

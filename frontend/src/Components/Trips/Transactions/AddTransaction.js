@@ -49,7 +49,7 @@ const AddTransaction = ({userCurrency, tripCurrency}) => {
       return;
     }
 
-    const res = await fetch("http://localhost:4000/transaction", {
+    const res = await fetch("https://tripzy-1.onrender.com/transaction", {
       method : "POST",
       headers : {
         "content-type" : "application/json",
