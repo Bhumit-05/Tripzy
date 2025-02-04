@@ -4,6 +4,7 @@ import useGetTrips from '../../hooks/useGetTrips';
 import { useSelector } from 'react-redux';
 import TripCard from './TripCard';
 import useGetFriends from '../../hooks/useGetFriends';
+import ScrollDown from '../../Extra Components/ScrollDown';
 
 const Home = () => {
 
@@ -35,11 +36,13 @@ const Home = () => {
           <h2 className='lg:text-2xl'>Tripzy – Where Every Trip’s Easy!</h2>
         </div>
       </div>
-      
+
       <div className='mt-12'>
+        <ScrollDown />
+
         <h1 className='text-5xl text-black text-center'>MY TRIPS</h1>
         <div className='border-b-2 border-gray-300'></div>
-        <div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 bg-gray-100/70 py-20'>
+        <div className='grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:grid-cols-3 bg-gray-100/70 py-20'>
           {sortedTripList.map(trip => <TripCard key={trip._id} trip={trip}/>)}
         </div>
       </div>
