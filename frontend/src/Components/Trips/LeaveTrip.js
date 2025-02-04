@@ -30,10 +30,13 @@ const LeaveTripButton = ({ tripId, NoOfTravellers }) => {
         "token": localStorage.getItem("token")
       },
       body: JSON.stringify({
-        tripId: tripId.tripId,
+        tripId: tripId,
         travellerId: user._id
       })
     });
+
+    console.log(tripId);
+    console.log(user._id)
 
     getTrips();
     Navigate("/home");

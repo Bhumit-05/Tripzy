@@ -13,7 +13,11 @@ const Header = () => {
   const getUserCurrencyDetails = useGetUserCurrencyDetails(user?.currencyCode);
   const dispatch = useDispatch();
 
-  dispatch(setDpURL(user?.dp_url));
+  useEffect(() => {
+    if (user?.dp_url) {
+      dispatch(setDpURL(user.dp_url));
+    }
+  }, [dispatch, user?.dp_url]);   
 
   useEffect(() => {
     if(userCurrency===null){
