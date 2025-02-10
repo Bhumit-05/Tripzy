@@ -41,7 +41,7 @@ const Profile = () => {
 
         // This is done because if the field is changed without updating db then the data should be restored back to its original value after the editing mode is switched
         if(isEditable){
-            const res = await fetch("https://tripzy-1.onrender.com/user/getUser", {
+            const res = await fetch("http://localhost:4000/user/getUser", {
                 method : "GET",
                 headers : {
                     "token" : localStorage.getItem("token")
@@ -59,7 +59,7 @@ const Profile = () => {
     }
 
     const handleUpdateClick = async () => {
-        const res = await fetch(`https://tripzy-1.onrender.com/user/${user?._id}`, {
+        const res = await fetch(`http://localhost:4000/user/${user?._id}`, {
             method : "PUT",
             headers : {
                 "token" : localStorage.getItem("token"),
@@ -99,7 +99,7 @@ const Profile = () => {
             <div className='mt-60 border border-gray-400 bg-gray-200 pt-20 rounded-2xl w-7/12 mx-auto mb-20 pb-20'>
                 <img 
                 src={dp_url}
-                className='max-w-fit rounded-full mx-auto sm:w-40 w-32 h-32 border-2 border-black mb-10'/>
+                className='max-w-fit rounded-full mx-auto sm:w-40 sm:40 w-32 h-32 border-2 border-black mb-10'/>
 
                 <div className='grid sm:grid-cols-2 grid-cols-1'>
                     <div className='flex flex-col w-full p-6'>

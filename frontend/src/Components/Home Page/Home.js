@@ -11,7 +11,7 @@ const Home = () => {
   const tripsList = useSelector(state => state.trips.tripsList);
   const friends = useSelector(state => state.friends.friendList);
   const sortedTripList = [...tripsList].sort((a, b) =>
-    new Date(b.createdAt) - new Date(a.createdAt)
+    new Date(b.endDate) - new Date(a.endDate)
   );
   const getFriends = useGetFriends();
   const getTrips = useGetTrips();
