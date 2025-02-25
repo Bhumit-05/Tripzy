@@ -53,9 +53,7 @@ const Profile = () => {
             setCurrencyCode(json.currencyCode);
         }
 
-        if(!updated){
-            setEdit(!isEditable);
-        }
+        setEdit(!isEditable);
     }
 
     const handleUpdateClick = async () => {
